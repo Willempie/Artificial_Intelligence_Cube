@@ -1,13 +1,13 @@
 from visual import *
+from my_frame import MyFrame
 
 
-class MyBox:
+class MyBox(MyFrame):
 
     __color = None
     __size = 2
     __thickness = 0.1
     __padding = 0.25
-    my_frame = None
 
     center_box = None
     front_box = None
@@ -16,7 +16,6 @@ class MyBox:
     bottom_box = None
     left_box = None
     right_box = None
-
 
     def __init__(self, base_pos=None, base_color=None, base_size=None):
         if base_pos is None:  # set default position
@@ -34,8 +33,8 @@ class MyBox:
         else:
             self.__size = base_size
 
-        self.my_frame = frame(pos=self.pos)
-        self.center_box = box(frame=self.my_frame,size=self.get_vector_size(), pos=self.pos, color=self.__color)
+        MyFrame.__init__(self, self.pos)
+        self.center_box = box(frame=self.object_frame,size=self.get_vector_size(), pos=self.pos, color=self.__color)
 
     def get_vector_size(self):
         return vector(self.__size, self.__size, self.__size)
@@ -43,33 +42,33 @@ class MyBox:
     def set_front(self, box_color):
         my_pos = self.pos + vector(0, 0, self.__size / 2)
         my_size = vector(self.__size, self.__size, self.__thickness) - vector(self.__padding, self.__padding, 0)
-        self.front_box = box(frame=self.my_frame,size=my_size, pos=my_pos, color=box_color)
+        self.front_box = box(frame=self.object_frame,size=my_size, pos=my_pos, color=box_color)
 
     def set_back(self, box_color):
         my_pos = self.pos - vector(0, 0, self.__size / 2)
         my_size = vector(self.__size, self.__size, self.__thickness) - vector(self.__padding, self.__padding, 0)
-        self.back_box = box(frame=self.my_frame,size=my_size, pos=my_pos, color=box_color)
+        self.back_box = box(frame=self.object_frame,size=my_size, pos=my_pos, color=box_color)
 
     def set_top(self, box_color):
         my_pos = self.pos + vector(0,  self.__size / 2, 0)
         my_size = vector(self.__size, self.__thickness, self.__size) - vector(self.__padding, 0, self.__padding)
-        self.top_box = box(frame=self.my_frame,size=my_size, pos=my_pos, color=box_color)
+        self.top_box = box(frame=self.object_frame,size=my_size, pos=my_pos, color=box_color)
 
     def set_bottom(self, box_color):
         my_pos = self.pos - vector(0,  self.__size / 2, 0)
         my_size = vector(self.__size, self.__thickness, self.__size) - vector(self.__padding, 0, self.__padding)
-        self.bottom_box = box(frame=self.my_frame,size=my_size, pos=my_pos, color=box_color)
+        self.bottom_box = box(frame=self.object_frame,size=my_size, pos=my_pos, color=box_color)
 
     def set_left(self, box_color):
         my_pos = self.pos - vector(self.__size / 2, 0, 0)
         my_size = vector(self.__thickness, self.__size, self.__size) - vector(0, self.__padding, self.__padding)
-        self.left_box = box(frame=self.my_frame,size=my_size, pos=my_pos, color=box_color)
+        self.left_box = box(frame=self.object_frame,size=my_size, pos=my_pos, color=box_color)
 
     def set_right(self, box_color):
         my_pos = self.pos + vector(self.__size / 2, 0, 0)
         my_size = vector(self.__thickness, self.__size, self.__size) - vector(0, self.__padding, self.__padding)
-        self.right_box = box(frame=self.my_frame,size=my_size, pos=my_pos, color=box_color)
+        self.right_box = box(frame=self.object_frame,size=my_size, pos=my_pos, color=box_color)
 
     def rotate(self, box_angle, box_axis, box_origin):
-        self.my_frame.rotate(angle=box_angle, axis=box_axis, origin=box_origin)
+        self.object_frame.rotate(angle=box_angle, axis=box_axis, origin=box_origin)
 

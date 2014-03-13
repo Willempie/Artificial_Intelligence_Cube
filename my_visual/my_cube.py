@@ -1,8 +1,9 @@
 from visual import *
 from my_box import MyBox
+from my_frame import MyFrame
 
 
-class MyCube:
+class MyCube(MyFrame):
 
     __cube_size = None
     __block_size = None
@@ -34,6 +35,8 @@ class MyCube:
             self.__block_color = color.gray(0.4)
         else:
             self.__block_color = block_color
+
+        MyFrame.__init__(self, self.__center)
 
         self.__array = [[[None
                           for k in xrange(self.__cube_size)]
@@ -143,27 +146,3 @@ class MyCube:
         for x in xrange(self.__cube_size):
             for y in xrange(self.__cube_size):
                 self.__array[x][y][index] = storage[x][y]
-        '''
-        front = self._front.get_row_x(index)
-        top = self.__top.get_row_x(index)
-        back = self.__back.get_row_x(index)
-        bottom = self.__bottom.get_row_x(index)
-
-        if direction == self.CONST_DIRECTION[3]: #right
-            self._front.set_row_x(index, bottom)
-            self.__top.set_row_x(index, front)
-            self.__back.set_row_x(index, top)
-            self.__bottom.set_row_x(index, back)
-
-            if index == 0:
-                self.__right = zip(*self.__right[::-1])
-            elif index == self.__size-1:
-                self.__left = zip(*self.__left[::1])
-
-        elif direction == self.CONST_DIRECTION[2]: #left
-            self._front.set_row_x(index, top)
-            self.__top.set_row_x(index, back)
-            self.__back.set_row_x(index, bottom)
-            self.__bottom.set_row_x(index, front)
-
-        '''
