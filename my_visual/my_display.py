@@ -7,58 +7,23 @@ from objects.cube_block import CubeBlock
 
 
 class MyDisplay(display):
-    L = 320  # length for window
-    d = 20
 
     def __init__(self):
         display.__init__(self)
-<<<<<<< HEAD
         '''
-        #initialize gui
-        w = window(width=2*(self.L+window.dwidth), height=self.L+window.dheight+window.menuheight, menus=True,
-                   title='Artificial Intelligence Cube')
-=======
-
         #initialize gui
         w = window(width=2*(self.L+window.dwidth), height=self.L+window.dheight+window.menuheight, menus=True,
                    title='Artificial Intelligence Cube')
 
         #display for the cube
         display(window=w, x=self.d, y=self.d, width=self.L-2*self.d, height=self.L-2*self.d, forward=-vector(0, 1, 2))
-
+        '''
         self.lights = [1]
         self.ambient = color.gray(1)
         self.background = color.gray(0.2)
 
-        #hello = VCubeBlock()
-        #hello.set_front(color.black)
 
-        size = 2
-        #x = MyCube(size,2)
-        #x = VCube(size, 2)
-        x = Cube(3)
-        x.my_print()
-        x.turn_z(0,1)
-        print("")
-        x.my_print()
 
-        '''
-        while True:
-            self.waitfor('click')
-            x.turn_x(random.randint(0, size-1), 1)
-            x.turn_x(random.randint(0, size-1), -1)
-            x.turn_y(random.randint(0, size-1), 1)
-            x.turn_y(random.randint(0, size-1), -1)
-            x.turn_z(random.randint(0, size-1), 1)
-            x.turn_z(random.randint(0, size-1), -1)
-        '''
-
-        my_cube = VCube(4, 2)
->>>>>>> e7168fd8c53f0e14c372d3f17e3a10c705e29849
-
-        #display for the cube
-        display(window=w, x=self.d, y=self.d, width=self.L-2*self.d, height=self.L-2*self.d, forward=-vector(0, 1, 2))
-        '''
 
         self.lights = []
         self.ambient = color.gray(1)
