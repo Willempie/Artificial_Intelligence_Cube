@@ -12,13 +12,14 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/untitled$first_try.coverage" NAME="first_try Coverage Results" MODIFIED="1394529721408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/untitled$mlp.coverage" NAME="mlp Coverage Results" MODIFIED="1394534712308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/untitled$first_try.coverage" NAME="first_try Coverage Results" MODIFIED="1395663770730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/untitled$mlp.coverage" NAME="mlp Coverage Results" MODIFIED="1395311709266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
     <SUITE FILE_PATH="coverage/untitled$test.coverage" NAME="test Coverage Results" MODIFIED="1393779954283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/untitled$preceptron.coverage" NAME="preceptron Coverage Results" MODIFIED="1394703185357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/untitled$ga.coverage" NAME="ga Coverage Results" MODIFIED="1394537209322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
-    <SUITE FILE_PATH="coverage/untitled$perceptron2.coverage" NAME="perceptron2 Coverage Results" MODIFIED="1394701458986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
-    <SUITE FILE_PATH="coverage/untitled$preceptron__1_.coverage" NAME="preceptron (1) Coverage Results" MODIFIED="1394630400595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/untitled$preceptron.coverage" NAME="preceptron Coverage Results" MODIFIED="1394703185357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/untitled$xxx.coverage" NAME="xxx Coverage Results" MODIFIED="1395060670020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/untitled$perceptron2.coverage" NAME="perceptron2 Coverage Results" MODIFIED="1395654304750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/untitled$preceptron__1_.coverage" NAME="preceptron (1) Coverage Results" MODIFIED="1395043841783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -32,45 +33,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ga.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/ga.py">
+      <file leaf-file-name="v_cube_block.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/object_visual/v_cube_block.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="216" column="41" selection-start="8228" selection-end="8228" vertical-scroll-proportion="0.0" vertical-offset="3672" max-vertical-offset="4267">
+            <state line="49" column="60" selection-start="2176" selection-end="2176" vertical-scroll-proportion="0.5072464" vertical-offset="519" max-vertical-offset="1071">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="preceptron.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/examples/preceptron.py">
+      <file leaf-file-name="cube.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/objects/cube.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="0" selection-start="872" selection-end="872" vertical-scroll-proportion="1.3575525" vertical-offset="4" max-vertical-offset="2907">
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state line="20" column="26" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1394">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="perceptron2.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/perceptron2.py">
+      <file leaf-file-name="b_cube.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/object_visual/b_cube.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="24" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1122">
-              <folding>
-                <marker date="1394700617650" expanded="true" signature="46:93" placeholder="import ..." />
-                <marker date="1394700617650" expanded="true" signature="105:2300" placeholder="..." />
-              </folding>
+            <state line="18" column="0" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mlp.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/mlp.py">
+      <file leaf-file-name="v_cube.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/object_visual/v_cube.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="236" column="16" selection-start="8989" selection-end="9045" vertical-scroll-proportion="0.0" vertical-offset="3655" max-vertical-offset="4607">
-              <folding>
-                <element signature="e#58#79#0" expanded="true" />
-              </folding>
+            <state line="63" column="42" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1530">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="b_fps.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/object_visual/b_fps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="24" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cube_block.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/objects/cube_block.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="24" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1564">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,22 +97,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/my_visual/visual_object.py" />
-        <option value="$PROJECT_DIR$/my_visual/my_box.py" />
-        <option value="$PROJECT_DIR$/interface/__init__.py" />
         <option value="$PROJECT_DIR$/objects/rubiks_cube.py" />
         <option value="$PROJECT_DIR$/objects/rubiks_cube_part.py" />
         <option value="$PROJECT_DIR$/my_visual/my_cube.py" />
         <option value="$PROJECT_DIR$/object_visual/b_cube.py" />
-        <option value="$PROJECT_DIR$/object_visual/v_cube_block.py" />
-        <option value="$PROJECT_DIR$/object_visual/v_cube.py" />
-        <option value="$PROJECT_DIR$/objects/cube_block.py" />
-        <option value="$PROJECT_DIR$/objects/cube.py" />
-        <option value="$PROJECT_DIR$/my_visual/my_display.py" />
-        <option value="$PROJECT_DIR$/first_try.py" />
-        <option value="$PROJECT_DIR$/examples/mlp.py" />
-        <option value="$PROJECT_DIR$/examples/perceptron2.py" />
+        <option value="$PROJECT_DIR$/object_visual/v_display.py" />
         <option value="$PROJECT_DIR$/examples/preceptron.py" />
+        <option value="$PROJECT_DIR$/examples/xxx.py" />
+        <option value="$PROJECT_DIR$/object_visual/b_fps.py" />
+        <option value="$PROJECT_DIR$/examples/perceptron2.py" />
+        <option value="$PROJECT_DIR$/examples/mlp.py" />
+        <option value="$PROJECT_DIR$/objects/cube_block.py" />
+        <option value="$PROJECT_DIR$/object_visual/v_cube.py" />
+        <option value="$PROJECT_DIR$/first_try.py" />
+        <option value="$PROJECT_DIR$/object_visual/v_cube_block.py" />
+        <option value="$PROJECT_DIR$/my_visual/my_display.py" />
+        <option value="$PROJECT_DIR$/objects/cube.py" />
       </list>
     </option>
   </component>
@@ -153,6 +165,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Artificial_Intelligence_Cube" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Artificial_Intelligence_Cube" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="object_visual" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Artificial_Intelligence_Cube" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my_visual" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Artificial_Intelligence_Cube" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -160,87 +228,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <PyConsoleSettings />
-    </option>
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\tonnie\PycharmProjects\Artificial_Intelligence_Cube\examples" />
-      <recent name="C:\Users\tonnie\PycharmProjects\Artificial_Intelligence_Cube\object_visual" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tonnie\PycharmProjects\Artificial_Intelligence_Cube\examples" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.preceptron">
-    <configuration default="false" name="preceptron" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="untitled" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\tonnie\PycharmProjects\Artificial_Intelligence_Cube\examples\preceptron.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="mlp" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="untitled" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/mlp.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonCover" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonCover" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ga" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="untitled" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/ga.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.first_try">
     <configuration default="false" name="preceptron (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -276,6 +271,65 @@
       <module name="untitled" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/perceptron2.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="first_try" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="untitled" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/first_try.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="xxx" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="untitled" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/xxx.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="mlp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="untitled" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/mlp.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -365,9 +419,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -389,6 +440,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -432,40 +486,23 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.preceptron" />
-      <item index="1" class="java.lang.String" itemvalue="Python.mlp" />
-      <item index="2" class="java.lang.String" itemvalue="Python.ga" />
-      <item index="3" class="java.lang.String" itemvalue="Python.preceptron (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.perceptron2" />
+      <item index="0" class="java.lang.String" itemvalue="Python.preceptron (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.perceptron2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.first_try" />
+      <item index="3" class="java.lang.String" itemvalue="Python.xxx" />
+      <item index="4" class="java.lang.String" itemvalue="Python.mlp" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.preceptron" />
+        <item index="0" class="java.lang.String" itemvalue="Python.first_try" />
         <item index="1" class="java.lang.String" itemvalue="Python.perceptron2" />
-        <item index="2" class="java.lang.String" itemvalue="Python.preceptron (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ga" />
-        <item index="4" class="java.lang.String" itemvalue="Python.mlp" />
+        <item index="2" class="java.lang.String" itemvalue="Python.mlp" />
+        <item index="3" class="java.lang.String" itemvalue="Python.xxx" />
+        <item index="4" class="java.lang.String" itemvalue="Python.preceptron (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8994bbdc-dda9-4687-bfa0-16f471483d39" name="Default" comment="" />
@@ -476,18 +513,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35911018" sideWeight="0.64790285" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22563559" sideWeight="0.6523179" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39072847" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.345987" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35209712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47613883" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34768212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -512,104 +549,103 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/examples/preceptron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="16" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2890" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/perceptron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="238" column="11" selection-start="8865" selection-end="8865" vertical-scroll-proportion="0.7723214" vertical-offset="3320" max-vertical-offset="4216" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/mlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="162" column="29" selection-start="6181" selection-end="6181" vertical-scroll-proportion="0.0" vertical-offset="2677" max-vertical-offset="4573" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/perceptron2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="70" selection-start="1207" selection-end="1207" vertical-scroll-proportion="0.59130436" vertical-offset="306" max-vertical-offset="1717" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/my_visual/my_cube.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="2842" selection-end="2907" vertical-scroll-proportion="0.31114328" vertical-offset="1179" max-vertical-offset="2584" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/objects/cube_block.py">
+    <entry file="file://$PROJECT_DIR$/first_try.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="22" selection-start="2448" selection-end="2448" vertical-scroll-proportion="1.934877" vertical-offset="108" max-vertical-offset="1564" />
+        <state line="9" column="0" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/object_visual/v_cube_block.py">
+    <entry file="file://C:/Python27/Lib/site-packages/visual_common/create_display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="30" selection-start="597" selection-end="597" vertical-scroll-proportion="-0.23103449" vertical-offset="457" max-vertical-offset="1037" />
+        <state line="821" column="0" selection-start="29447" selection-end="29447" vertical-scroll-proportion="0.33333334" vertical-offset="13773" max-vertical-offset="20060">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/object_visual/v_cube.py">
+    <entry file="file://$PROJECT_DIR$/object_visual/v_display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="2209" selection-end="2674" vertical-scroll-proportion="0.029310346" vertical-offset="986" max-vertical-offset="1581" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/object_visual/b_cube.py">
+    <entry file="file://$PROJECT_DIR$/my_visual/my_frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="37" selection-end="377" vertical-scroll-proportion="0.14655173" vertical-offset="0" max-vertical-offset="580" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="881" column="0" selection-start="31573" selection-end="31573" vertical-scroll-proportion="0.33275864" vertical-offset="14665" max-vertical-offset="15351">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="859">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_visual/my_display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="539" selection-end="539" vertical-scroll-proportion="0.23448277" vertical-offset="170" max-vertical-offset="1071" />
+        <state line="37" column="20" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.4076087" vertical-offset="319" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/cube_block.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="24" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1564">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/objects/cube.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="17" selection-start="4169" selection-end="4187" vertical-scroll-proportion="0.47241378" vertical-offset="1511" max-vertical-offset="2091" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/first_try.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="386" selection-end="404" vertical-scroll-proportion="0.41319445" vertical-offset="0" max-vertical-offset="576" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/chess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-762174762/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="531" column="4" selection-start="17669" selection-end="17669" vertical-scroll-proportion="0.33211678" vertical-offset="8845" max-vertical-offset="86683">
+        <state line="20" column="26" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/ga.py">
+    <entry file="file://$PROJECT_DIR$/object_visual/b_cube.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="41" selection-start="8228" selection-end="8228" vertical-scroll-proportion="0.0" vertical-offset="3337" max-vertical-offset="4233">
+        <state line="18" column="0" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/perceptron.py">
+    <entry file="file://$PROJECT_DIR$/object_visual/b_fps.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="11" selection-start="8865" selection-end="8865" vertical-scroll-proportion="1.7694974" vertical-offset="2991" max-vertical-offset="4216">
+        <state line="10" column="24" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/mlp.py">
+    <entry file="file://$PROJECT_DIR$/object_visual/v_cube.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="16" selection-start="8989" selection-end="9045" vertical-scroll-proportion="0.0" vertical-offset="3655" max-vertical-offset="4607">
-          <folding>
-            <element signature="e#58#79#0" expanded="true" />
-          </folding>
+        <state line="63" column="42" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.0" vertical-offset="650" max-vertical-offset="1530">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/perceptron2.py">
+    <entry file="file://$PROJECT_DIR$/object_visual/v_cube_block.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="24" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1122">
-          <folding>
-            <marker date="1394700617650" expanded="true" signature="46:93" placeholder="import ..." />
-            <marker date="1394700617650" expanded="true" signature="105:2300" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/preceptron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="872" selection-end="872" vertical-scroll-proportion="1.3575525" vertical-offset="4" max-vertical-offset="2907">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state line="49" column="60" selection-start="2176" selection-end="2176" vertical-scroll-proportion="0.5072464" vertical-offset="519" max-vertical-offset="1071">
+          <folding />
         </state>
       </provider>
     </entry>

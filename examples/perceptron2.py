@@ -5,57 +5,92 @@ from random import uniform
 from math import exp
 
 class mlp:
-    def __init__(self):
-        self.weights1 = []
-        self.weights2 = []
-        self.epochs = 50
-        self.hidden = 10
+    def __init__(self, hidden, epochs):
+        self.epochs = epochs
+        self.hidden = hidden
 
-    def learn(self):
-        if self.hidden <= 0 or self.hidden >= 1000: return
-        if len(self.weights1) <> self.hidden:
-            self.weights1 = [[uniform(-1, 1) for l in range(1+2)] for k in range(self.hidden)]
-            self.weights2 = [[uniform(-1, 1) for l in range(1+self.hidden)] for k in range(3)]
-        outputs = [[1, 0], [0, 1]]
+        self.weights = []
+        self.weights.append([uniform(-1, 1), uniform(-1, 1)])
+        for x in range(len(self.hidden)):
+            self.weights.append([uniform(-1, 1) for l in range(self.hidden[x])])
 
-        for epoch in range(self.epochs):
-            self.train(self.weights1, self.weights2, [0, 0], [0])
-            self.train(self.weights1, self.weights2, [0, 1], [1])
-            self.train(self.weights1, self.weights2, [1, 0], [1])
-            self.train(self.weights1, self.weights2, [1, 1], [0])
+    def learn(self, a, b, result):
+        count = len(self.hidden)+1
+        '''
+        values = []
+        for x in range(count):
+            if x == 0:
+                values.append(self.calc(self.weights[x], [a, b]))
+            else:
+                values.append(self.calc(self.weights[x], [values[x-1]]))
+        '''
 
-        #print(self.weights1)
+        values = self.calc_all(a, b)
 
-        values0 = [1,1]
-        values1 = self.calc(self.weights1, values0)
-        values2 = self.calc(self.weights2, values1)
-        #print(values2)
-        print[m for maxval in [max(values2)] for m in range(len(values2)) if values2[m] >= maxval][0]
+        errors = []
+        for x in range(count):
+            if x == 0:
+                errors.append(0.05 * (result - values[count-1]) * values[count-1] * (1 - values[count-1]))
+            else:
+                errors.append(0.05 * (result - errors[x-1]) * errors[x-1] * (1 - errors[x-1]))
 
-    @staticmethod
-    def calc(weights, inputs):
-        values = [1] + inputs
-        outputs = [1 / (1 + exp(-sum(weights[k][l] * values[l] for l in range(len(values))))) for k in range(len(weights))]
-        return outputs
 
-    @staticmethod
-    def propagateErrors(weights, outputs, errors):
-        return [sum(weights[l][1+k] * errors[l] for l in range(len(errors))) * outputs[k] * (1 - outputs[k]) for k in range(len(outputs))]
+        for x in range(count):
+            if x == count-1:
+                self.adjustWeights(self.weights[count-x-1],[result], errors[x])
+            else:
+                self.adjustWeights(self.weights[count-x-1],[values[count-1-x]], errors[x])
+
+
+        #print(self.weights)
+        #print(errors)
+        #print("")
+
+        #adjustWeights(weights2, values1, errors2)
+        #adjustWeights(weights1, inputs, errors1)
+
+        return
+
+    def calc_all(self, a, b):
+        values = []
+        for x in range(len(self.hidden)+1):
+            if x == 0:
+                values.append(self.calc(self.weights[x], [a, b]))
+            else:
+                values.append(self.calc(self.weights[x], [values[x-1]]))
+        return values
 
     @staticmethod
     def adjustWeights(weights, inputs, errors):
         values = [1] + inputs
-        for k in range(len(errors)):
-            for l in range(len(values)):
-                weights[k][l] = weights[k][l] + errors[k] * values[l]
+        for l in range(len(values)):
+            weights[l] = weights[l] + errors * values[l]
 
-    def train(self, weights1, weights2, inputs, outputs):
-        values1 = self.calc(weights1, inputs)
-        values2 = self.calc(weights2, values1)
-        errors2 = [0.25 * (outputs[k] - values2[k]) * values2[k] * (1 - values2[k]) for k in range(len(outputs))]
-        errors1 = self.propagateErrors(weights2, values1, errors2)
-        self.adjustWeights(weights2, values1, errors2)
-        self.adjustWeights(weights1, inputs, errors1)
+    @staticmethod
+    def calc(weights, inputs):
+        total = 0
+        my_weights = [1] + weights
+        for w in range(len(my_weights)):
+            for i in range(len(inputs)):
+                total += my_weights[w] * inputs[i]
 
-x = mlp()
-x.learn()
+        return 1 / (1 + exp(-total))
+
+
+x = mlp([2,2], 10)
+for z in range(5000):
+    x.learn(0, 0, 0)
+    x.learn(0, 1, 0)
+    x.learn(1, 0, 0)
+    x.learn(1, 1, 1)
+print("---------------------")
+
+
+print(x.calc_all(0,0))
+print(x.calc_all(0,1))
+print(x.calc_all(1,0))
+print(x.calc_all(1,1))
+#x.calc_all(1,1,3)
+
+#print(x.calc(x.weights,[1,0]))
+x.learn(0, 1, 1)

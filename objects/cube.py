@@ -37,81 +37,40 @@ class Cube:
                 self._array[x][y][0].set_back(5)
                 self._array[x][y][self._dimension-1].set_front(6)
 
-    def turn_x(self, index, direction):
+    def _rotate_array(self, xyz, index, direction):
         storage = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                storage[x][y] = self._array[index][x][y]
-
-        storage = zip(*storage[::direction])
 
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
-                storage[x][y].turn_x(direction)
-                self._array[index][x][y] = storage[x][y]
+                if xyz == 'x':
+                    storage[x][y] = self._array[index][x][y]
+                if xyz == 'y':
+                    storage[x][y] = self._array[y][index][x]
+                if xyz == 'z':
+                    storage[x][y] = self._array[x][y][index]
+
+        if direction == -1:
+            storage = zip(*storage)[::-1]
+        if direction == 1:
+            storage = zip(*storage[::-1])
+
+        for x in xrange(self._dimension):
+            for y in xrange(self._dimension):
+                if xyz == 'x':
+                    self._array[index][x][y] = storage[x][y]
+                if xyz == 'y':
+                    self._array[y][index][x] = storage[x][y]
+                if xyz == 'z':
+                    self._array[x][y][index] = storage[x][y]
+
+    def turn_x(self, index, direction):
+        self._rotate_array('x', index, direction)
 
     def turn_y(self, index, direction):
-        storage = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                storage[x][y] = self._array[x][index][y]
-
-        storage = zip(*storage[::direction])
-
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                storage[x][y].turn_y(direction)
-                self._array[x][index][y] = storage[x][y]
+        self._rotate_array('y', index, direction)
 
     def turn_z(self, index, direction):
-        storage = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                storage[x][y] = self._array[x][y][index]
-
-        storage = zip(*storage[::direction])
-
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                storage[x][y].turn_z(direction)
-                self._array[x][y][index] = storage[x][y]
+        self._rotate_array('z', index, direction)
 
     def my_print(self):
-        storage_left = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        storage_right = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        storage_top = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        storage_bottom = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        storage_front = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-        storage_back = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
-
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                storage_left[x][y] = self._array[0][x][y]._left
-                storage_right[x][y] = self._array[self._dimension-1][x][y]._right
-
-                storage_bottom[x][y] = self._array[x][0][y]._bottom
-                storage_top[x][y] = self._array[x][self._dimension-1][y]._top
-
-                storage_back[x][y] = self._array[x][y][0]._back
-                storage_front[x][y] = self._array[x][y][self._dimension-1]._front
-
-        for x in xrange(self._dimension):
-            print(storage_left[x])
-        print("")
-        for x in xrange(self._dimension):
-            print(storage_right[x])
-        print("")
-        for x in xrange(self._dimension):
-            print(storage_bottom[x])
-        print("")
-        for x in xrange(self._dimension):
-            print(storage_top[x])
-        print("")
-        for x in xrange(self._dimension):
-            print(storage_back[x])
-        print("")
-        for x in xrange(self._dimension):
-            print(storage_front[x])
-        print("")
-
-
+        return

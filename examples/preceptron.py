@@ -7,7 +7,7 @@ class Preceptron:
         self.weights = [uniform(-1, 1) for l in range(3)]
 
     def train(self, a, b, result, print_this=False):
-        values = [0] + [a, b]
+        values = [1] + [a, b]
         total = 0
         for x in range(3):
             total += values[x] * self.weights[x]
@@ -35,7 +35,7 @@ class Preceptron:
         #print(result)
 
 x = Preceptron()
-for z in range(0):
+for z in range(1000):
     x.train(0,0,0)
     x.train(1,0,1)
     x.train(0,1,1)

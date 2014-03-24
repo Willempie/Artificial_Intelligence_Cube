@@ -22,6 +22,9 @@ class VCubeBlock(CubeBlock, BCube):
     def get_vector_size(self):
         return vector(self._dimension, self._dimension, self._dimension)
 
+    def set_color(self, box_color):
+        self._center_box.color = box_color
+
     def set_front(self, box_color):
         my_pos = self._pos + vector(0, 0, self._dimension / 2)
         my_dimension = vector(self._dimension, self._dimension, self._thickness) - vector(self._padding, self._padding, 0)
@@ -54,4 +57,3 @@ class VCubeBlock(CubeBlock, BCube):
 
     def rotate(self, box_angle, box_axis, box_origin):
         self.v_frame.rotate(angle=box_angle, axis=box_axis, origin=box_origin)
-

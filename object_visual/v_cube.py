@@ -1,19 +1,17 @@
 from visual import *
 from b_cube import BCube
+from b_fps import BFps
 from objects.cube import Cube
 from v_cube_block import VCubeBlock
 
 
-class VCube(Cube, BCube):
-
-    _rate = 24
-    _fps = 24
-    _angle = pi / 2
+class VCube(Cube, BCube, BFps):
 
     def __init__(self, cube_size=None, block_size=None, start_pos=None, block_color=None):
 
         Cube.__init__(self, cube_size, False)
         BCube.__init__(self, start_pos, cube_size)
+        BFps.__init__(self)
 
         if block_size is None or block_size < 2:
             self._block_size = 2
@@ -39,8 +37,7 @@ class VCube(Cube, BCube):
                     current_vector = vector(self._block_size*x, self._block_size*y, self._block_size*z)
                     current_block_pos = start_vector + half_block + current_vector
 
-                    my_box = VCubeBlock(current_block_pos,self._block_color,self._block_size*2)
-                    self._array[x][y][z] = my_box
+                    self._array[x][y][z] = VCubeBlock(current_block_pos,self._block_color,self._block_size*2)
 
         # set side colors
         for x in xrange(self._dimension):
@@ -54,38 +51,39 @@ class VCube(Cube, BCube):
                 self._array[x][y][0].set_back(color.yellow)
                 self._array[x][y][self._dimension-1].set_front(color.white)
 
+
     def set_cube_color(self, cube_color):
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 for z in xrange(self._dimension):
-                    self._array[x][y][z].color = cube_color
+                    self._array[x][y][z].set_color(cube_color)
 
     def turn_x(self, index, direction):
-        for r in xrange(self._fps):
-            rate(self._rate)
+        for r in xrange(self.fps):
+            rate(self.rate)
             for x in xrange(self._dimension):
                 for y in xrange(self._dimension):
-                    self._array[index][x][y].rotate(self._angle/self._fps,
+                    self._array[index][x][y].rotate(self.degrees90/self.fps,
                                                     vector(direction*-1, 0, 0),
                                                     self._pos)
-        Cube.turn_x(self, index, direction*-1)
+        Cube.turn_x(self, index, direction)
 
     def turn_y(self, index, direction):
-        for r in xrange(self._fps):
-            rate(self._rate)
+        for r in xrange(self.fps):
+            rate(self.rate)
             for x in xrange(self._dimension):
                 for y in xrange(self._dimension):
-                    self._array[x][index][y].rotate(self._angle/self._fps,
+                    self._array[x][index][y].rotate(self.degrees90/self.fps,
                                                     vector(0, direction*-1, 0),
                                                     self._pos)
-        Cube.turn_y(self, index, direction*-1)
+        Cube.turn_y(self, index, direction)
 
     def turn_z(self, index, direction):
-        for r in xrange(self._fps):
-            rate(self._rate)
+        for r in xrange(self.fps):
+            rate(self.rate)
             for x in xrange(self._dimension):
                 for y in xrange(self._dimension):
-                    self._array[x][y][index].rotate(self._angle/self._fps,
+                    self._array[x][y][index].rotate(self.degrees90/self.fps,
                                                     vector(0, 0, direction*-1),
                                                     self._pos)
-        Cube.turn_z(self, index, direction*-1)
+        Cube.turn_z(self, index, direction)
