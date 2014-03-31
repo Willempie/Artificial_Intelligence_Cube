@@ -4,7 +4,7 @@ from os import path
 
 class XmlParser:
 
-    _CONST_XML_LOCATION = "../xml"
+    _CONST_XML_LOCATION = "../../xml"
 
     def __init__(self):
 

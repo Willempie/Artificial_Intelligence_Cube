@@ -1,7 +1,7 @@
 from visual import *
 
 
-class BCube:
+class BVCube:
 
     def __init__(self, position, dimension):
 

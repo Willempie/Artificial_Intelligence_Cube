@@ -1,89 +1,59 @@
 from visual import *
-from b_cube import BCube
-from b_fps import BFps
-from objects.cube import Cube
-from v_cube_block import VCubeBlock
+from objects.cube.cube import Cube
+from b_v_cube import BVCube
 
 
-class VCube(Cube, BCube, BFps):
+class VCube(Cube, BVCube):
 
-    def __init__(self, cube_size=None, block_size=None, start_pos=None, block_color=None):
+    _thickness = 0.1
+    _padding = 0.25
 
-        Cube.__init__(self, cube_size, False)
-        BCube.__init__(self, start_pos, cube_size)
-        BFps.__init__(self)
+    def __init__(self, base_pos=None, base_color=None, base_dimension=None):
+        Cube.__init__(self)
+        BVCube.__init__(self, base_pos, base_dimension)
 
-        if block_size is None or block_size < 2:
-            self._block_size = 2
+        if base_color is None:
+            self.color = color.white
         else:
-            self._block_size = block_size
+            self.color = base_color
 
-        if block_color is None:
-            self._block_color = color.gray(0.4)
-        else:
-            self._block_color = block_color
+        self._center_box = box(frame=self.v_frame, size=self.get_vector_size(), pos=self._pos, color=self.color)
 
-        self.reset_array()
+    def get_vector_size(self):
+        return vector(self._dimension, self._dimension, self._dimension)
 
-    def reset_array(self):
-        start_point = self._dimension*self._block_size/2
-        start_vector = self._pos - vector(start_point, start_point, start_point)
-        half_block = vector(self._block_size/2, self._block_size/2, self._block_size/2)
+    def set_color(self, box_color):
+        self._center_box.color = box_color
 
-        # generate all the cubes
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                for z in xrange(self._dimension):
-                    current_vector = vector(self._block_size*x, self._block_size*y, self._block_size*z)
-                    current_block_pos = start_vector + half_block + current_vector
+    def set_front(self, box_color):
+        my_pos = self._pos + vector(0, 0, self._dimension / 2)
+        my_dimension = vector(self._dimension, self._dimension, self._thickness) - vector(self._padding, self._padding, 0)
+        self._front = box(frame=self.v_frame, size=my_dimension, pos=my_pos, color=box_color)
 
-                    self._array[x][y][z] = VCubeBlock(current_block_pos,self._block_color,self._block_size*2)
+    def set_back(self, box_color):
+        my_pos = self._pos - vector(0, 0, self._dimension / 2)
+        my_dimension = vector(self._dimension, self._dimension, self._thickness) - vector(self._padding, self._padding, 0)
+        self._back = box(frame=self.v_frame, size=my_dimension, pos=my_pos, color=box_color)
 
-        # set side colors
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                self._array[0][x][y].set_left(color.blue)
-                self._array[self._dimension-1][x][y].set_right(color.green)
+    def set_top(self, box_color):
+        my_pos = self._pos + vector(0,  self._dimension / 2, 0)
+        my_dimension = vector(self._dimension, self._thickness, self._dimension) - vector(self._padding, 0, self._padding)
+        self._top = box(frame=self.v_frame, size=my_dimension, pos=my_pos, color=box_color)
 
-                self._array[x][0][y].set_bottom(color.orange)
-                self._array[x][self._dimension-1][y].set_top(color.red)
+    def set_bottom(self, box_color):
+        my_pos = self._pos - vector(0,  self._dimension / 2, 0)
+        my_dimension = vector(self._dimension, self._thickness, self._dimension) - vector(self._padding, 0, self._padding)
+        self._bottom = box(frame=self.v_frame, size=my_dimension, pos=my_pos, color=box_color)
 
-                self._array[x][y][0].set_back(color.yellow)
-                self._array[x][y][self._dimension-1].set_front(color.white)
+    def set_left(self, box_color):
+        my_pos = self._pos - vector(self._dimension / 2, 0, 0)
+        my_dimension = vector(self._thickness, self._dimension, self._dimension) - vector(0, self._padding, self._padding)
+        self._left = box(frame=self.v_frame, size=my_dimension, pos=my_pos, color=box_color)
 
+    def set_right(self, box_color):
+        my_pos = self._pos + vector(self._dimension / 2, 0, 0)
+        my_dimension = vector(self._thickness, self._dimension, self._dimension) - vector(0, self._padding, self._padding)
+        self._right = box(frame=self.v_frame, size=my_dimension, pos=my_pos, color=box_color)
 
-    def set_cube_color(self, cube_color):
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                for z in xrange(self._dimension):
-                    self._array[x][y][z].set_color(cube_color)
-
-    def turn_x(self, index, direction):
-        for r in xrange(self.fps):
-            rate(self.rate)
-            for x in xrange(self._dimension):
-                for y in xrange(self._dimension):
-                    self._array[index][x][y].rotate(self.degrees90/self.fps,
-                                                    vector(direction*-1, 0, 0),
-                                                    self._pos)
-        Cube.turn_x(self, index, direction)
-
-    def turn_y(self, index, direction):
-        for r in xrange(self.fps):
-            rate(self.rate)
-            for x in xrange(self._dimension):
-                for y in xrange(self._dimension):
-                    self._array[x][index][y].rotate(self.degrees90/self.fps,
-                                                    vector(0, direction*-1, 0),
-                                                    self._pos)
-        Cube.turn_y(self, index, direction)
-
-    def turn_z(self, index, direction):
-        for r in xrange(self.fps):
-            rate(self.rate)
-            for x in xrange(self._dimension):
-                for y in xrange(self._dimension):
-                    self._array[x][y][index].rotate(self.degrees90/self.fps,
-                                                    vector(0, 0, direction*-1),
-                                                    self._pos)
-        Cube.turn_z(self, index, direction)
+    def rotate(self, box_angle, box_axis, box_origin):
+        self.v_frame.rotate(angle=box_angle, axis=box_axis, origin=box_origin)

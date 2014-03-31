@@ -1,6 +1,11 @@
-class CubeBlock:
+from b_cube import BCube
+
+
+class Cube(BCube):
 
     def __init__(self):
+        BCube.__init__(self)
+
         self._front = None
         self._back = None
         self._top = None
@@ -11,20 +16,38 @@ class CubeBlock:
     def set_front(self, color):
         self._front = color
 
+    def get_front(self):
+        return self._front
+
     def set_back(self, color):
         self._back = color
+
+    def get_back(self):
+        return self._back
 
     def set_top(self, color):
         self._top = color
 
+    def get_top(self):
+        return self._top
+
     def set_bottom(self, color):
         self._bottom = color
+
+    def get_bottom(self):
+        return self._bottom
 
     def set_left(self, color):
         self._left = color
 
+    def get_left(self):
+        return self._left
+
     def set_right(self, color):
         self._right = color
+
+    def get_right(self):
+        return self._right
 
     def turn_x(self, direction):
         storage_front = self._front
