@@ -1,5 +1,5 @@
 from visual import *
-from object_visual.v_cube import VCube
+from object_visual.v_rubiks_cube import VRubiksCube
 from cubegui import *
 
 class VDisplay(display):
@@ -19,7 +19,7 @@ class VDisplay(display):
         self.current_key = None
         self.action = False
 
-        self.cube = VCube(3)
+        self.cube = VRubiksCube(3)
 
         # keyboard event handler
         keyboard_handler = KeyboardHandler(cube_gui.get_window_frame(), self.cube, cube_gui.get_window_frame())
