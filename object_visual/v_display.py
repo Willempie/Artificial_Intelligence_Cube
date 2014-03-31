@@ -1,19 +1,16 @@
 from visual import *
 from object_visual.v_cube import VCube
+from cubegui import *
 
 class VDisplay(display):
 
     def __init__(self):
         display.__init__(self)
-        '''
-        #initialize gui
-        w = window(width=2*(self.L+window.dwidth), height=self.L+window.dheight+window.menuheight, menus=True,
-                   title='Artificial Intelligence Cube')
 
-        #display for the cube
-        display(window=w, x=self.d, y=self.d, width=self.L-2*self.d, height=self.L-2*self.d, forward=-vector(0, 1, 2))
-        '''
-
+        # set gui for cube
+        cube_gui = CubeGui('Artificial Intelligence Cube')
+        cube_gui.display_gui()
+        cube_gui.add_gui_items()
 
         self.lights = []
         self.ambient = color.gray(1)
@@ -24,10 +21,17 @@ class VDisplay(display):
 
         self.cube = VCube(3)
 
-        self.bind('keydown', self.keyInput)
-        self.bind('keyup', self.keyRelease)
+        # keyboard event handler
+        keyboard_handler = KeyboardHandler(cube_gui.get_window_frame(), self.cube, cube_gui.get_window_frame())
+        keyboard_handler.bind_key(wx.EVT_KEY_DOWN, keyboard_handler.on_key_down)
+        keyboard_handler.bind_key(wx.EVT_KILL_FOCUS, keyboard_handler.test_function)
 
-    def keyInput(self, evt):
+        print(wx.Window.FindFocus())
+
+
+
+
+    '''def keyInput(self, evt):
         s = evt.key
         if evt.ctrl:
             direction = -1
@@ -46,6 +50,7 @@ class VDisplay(display):
             rate(self.cube.fps)
         else:
             return
+    '''
 
     def keyRelease(self, evt):
         self.current_key = None
