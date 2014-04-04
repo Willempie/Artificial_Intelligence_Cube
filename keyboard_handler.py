@@ -5,53 +5,38 @@ import wx
 
 class KeyboardHandler():
 
-    __frame = None
+    __display = None
     __cube = None
-    __win = None
 
-    __x_key_code = 88
-    __y_key_code = 89
-    __z_key_code = 90
+    __x_key = "x"
+    __y_key = "y"
+    __z_key = "z"
 
     __direction = 1
 
-    def __init__(self, frame, cube, win):
-        self.__frame = frame
+    def __init__(self, display, cube):
+        self.__display = display
         self.__cube = cube
-        self.__win = win
 
-    def bind_key(self, key, action):
-        if self.__frame is not None:
-            self.__frame.Bind(key, action)
-
-    def set_direction(self, evt):
-        if evt.ControlDown():
+    def set_direction(self, event):
+        if event.ctrl:
             self.__direction = -1
         else:
             self.__direction = 1
 
-    def on_key_down(self, evt):
-        key_code = evt.GetKeyCode()
+    def on_key_down(self, event):
+        key = event.key
 
-        self.set_direction(evt)  # set direction
+        self.set_direction(event)  # set direction
 
-        if isinstance(key_code, int):
-            rate(self.__cube.fps)
-            if key_code == self.__x_key_code:
-                self.__cube.turn_x(random.randint(0, 3), self.__direction)
-                #print("x")
-            elif key_code == self.__y_key_code:
-                self.__cube.turn_y(random.randint(0, 3), self.__direction)
-                #print("y")
-            elif key_code == self.__z_key_code:
-                self.__cube.turn_z(random.randint(0, 3), self.__direction)
-                #print("z")
-            rate(self.__cube.fps)
-
-
-    def test_function(self, evt):
-        print(wx.Window.FindFocus())
-        wx.Window.SetFocus(self.__win)
-
-
-        print("Test")
+        rate(self.__cube.fps)
+        if key == self.__x_key:
+            self.__cube.turn_x(random.randint(0, 3), self.__direction)
+            #print("x")
+        elif key == self.__y_key:
+            self.__cube.turn_y(random.randint(0, 3), self.__direction)
+            #print("y")
+        elif key == self.__z_key:
+            self.__cube.turn_z(random.randint(0, 3), self.__direction)
+            #print("z")
+        rate(self.__cube.fps)
