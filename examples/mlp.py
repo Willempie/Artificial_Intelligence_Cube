@@ -246,7 +246,17 @@ def calc(weights, inputs):
     return outputs
 
 def propagateErrors(weights, outputs, errors):
-    return [sum(weights[l][1+k] * errors[l] for l in range(len(errors))) * outputs[k] * (1 - outputs[k]) for k in range(len(outputs))]
+    errors1 = []
+
+    for k in range(len(outputs)):
+        the_sum = 0
+        for l in range(len(errors)):
+            the_sum += weights[l][1+k] * errors[l]
+
+        errors1.append(the_sum * outputs[k] * (1 - outputs[k]))
+
+    return errors1
+    #return [sum(weights[l][1+k] * errors[l] for l in range(len(errors))) * outputs[k] * (1 - outputs[k]) for k in range(len(outputs))]
 
 def adjustWeights(weights, inputs, errors):
     values = [1] + inputs
@@ -257,7 +267,10 @@ def adjustWeights(weights, inputs, errors):
 def train(weights1, weights2, inputs, outputs):
     values1 = calc(weights1, inputs)
     values2 = calc(weights2, values1)
-    errors2 = [0.25 * (outputs[k] - values2[k]) * values2[k] * (1 - values2[k]) for k in range(len(outputs))]
+    errors2 = []
+    for k in range(len(outputs)):
+        errors2.append(0.25 * (outputs[k] - values2[k]) * values2[k] * (1 - values2[k]))
+    #errors2 = [0.25 * (outputs[k] - values2[k]) * values2[k] * (1 - values2[k]) for k in range(len(outputs))]
     errors1 = propagateErrors(weights2, values1, errors2)
     adjustWeights(weights2, values1, errors2)
     adjustWeights(weights1, inputs, errors1)

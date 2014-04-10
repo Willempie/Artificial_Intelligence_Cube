@@ -1,19 +1,20 @@
 import wx
 
+
 class GuiItems:
 
-    __gui_itemlist = None
+    __GUI = None
+    __GUI_panel = None
 
-
-    def __init__(self):
-        self.__gui_itemlist = []
-        return
+    def __init__(self, gui, gui_panel):
+        self.__GUI = gui
+        self.__GUI_panel = gui_panel
 
     def gen_text(self):
         return
 
-    def gen_button(self, panel, text, position_x, position_y):
-        return wx.Button(panel, label=text, pos=(position_x, position_y))
+    def gen_button(self, text, position_x, position_y):
+        return wx.Button(self.__GUI_panel, label=text, pos=(position_x, position_y))
 
     def gen_radiobox(self, panel, position_x, position_y, radio_size, style, options):
         return wx.RadioBox(panel, pos=(position_x, position_y), size=radio_size, choices=options, style=style)
@@ -27,5 +28,5 @@ class GuiItems:
     def bind_element(self, element, event, method):
         element.Bind(event, method)
 
-    def test(self, evt):
-        print("fuck tonnie")
+    def add_gui_item(self):
+        return
