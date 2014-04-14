@@ -1,13 +1,14 @@
 from object_visual.v_display import VDisplay
-#x = VDisplay()
-
-
 from objects.cube.rubiks_cube import RubiksCube
-from objects.cube.cube import Cube
 
-z = RubiksCube()
+x = VDisplay()
+x.create_input_display()
 
 
-print(z.contains(8))
+z = RubiksCube(2)
 
-z.my_print()
+print(z.solved())
+z.turn_x(0,1)
+print(z.solved())
+z.turn_x(0,-1)
+print(z.solved())

@@ -10,9 +10,16 @@ class MouseHandler():
     __start_position = None
 
     def __init__(self, cube_display):
-        # bind mouse
         self.__cube_display = cube_display
+
+    def bind_grab(self):
         self.__cube_display.bind('mousedown', self.grab)
+
+    def bind_mouse_click(self):
+        self.__cube_display.bind('click', self.mouse_click)
+
+    def mouse_click(self, event):
+        print("Object address: ", event.pick)
 
     def grab(self, event):
         #print("Block Address: ", event.pick)
