@@ -49,7 +49,7 @@ class XmlObject:
 
         for x in Helper.CUBE_SIDES:
             side = ET.Element(x)
-            rubiks_cube_side = rubikscube._get_side(x)
+            rubiks_cube_side = rubikscube.get_side(x)
             for y in range(rubikscube.get_size()):
                 for z in range(rubikscube.get_size()):
                     cube = ET.Element("Part-"+str(y)+"-"+str(z))
@@ -70,7 +70,7 @@ class XmlObject:
             for y in range(rubikscube.get_size()):
                 for z in range(rubikscube.get_size()):
                     side[y][z] = xml.find(self._part_finder(type_cube,x,y,z)).text
-            rubikscube._set_side(x, side)
+            rubikscube.set_side(x, side)
 
         return rubikscube
 

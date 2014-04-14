@@ -64,7 +64,7 @@ class RubiksCube(BRubiksCube):
                 if xyz == 'z':
                     self._array[x][y][index] = storage[x][y]
 
-    def _set_side(self, side, input_color):
+    def set_side(self, side, input_color):
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 if isinstance(input_color, list):
@@ -85,7 +85,7 @@ class RubiksCube(BRubiksCube):
                 if side == "Right":
                     self._array[self._dimension-1][x][y].set_right(color)
 
-    def _get_side(self, side):
+    def get_side(self, side):
         array = [[None for k in xrange(self._dimension)] for i in xrange(self._dimension)]
 
         for x in xrange(self._dimension):
@@ -120,6 +120,15 @@ class RubiksCube(BRubiksCube):
 
         return Helper.array_2d_all_same(array, self._dimension)
 
+    def contains(self, item):
+        for side in Helper.CUBE_SIDES:
+            array = self.get_side(side)
+            for x in range(self._dimension):
+                for y in range(self._dimension):
+                    if array[x][y] == item:
+                        return  True
+        return False
+
     def solved(self):
         return self.check_top() and \
                self.check_bottom() and \
@@ -138,55 +147,55 @@ class RubiksCube(BRubiksCube):
         self._rotate_array('z', index, direction)
 
     def set_front(self, color):
-        self._set_side("Front", color)
+        self.set_side("Front", color)
 
     def get_front(self):
-        return self._get_side("Front")
+        return self.get_side("Front")
 
     def check_front(self):
         return self._check_side("Front")
 
     def set_back(self, color):
-        self._set_side("Back", color)
+        self.set_side("Back", color)
 
     def get_back(self):
-        return self._get_side("Back")
+        return self.get_side("Back")
 
     def check_back(self):
         return self._check_side("Back")
 
     def set_top(self, color):
-        self._set_side("Top", color)
+        self.set_side("Top", color)
 
     def get_top(self):
-        return self._get_side("Top")
+        return self.get_side("Top")
 
     def check_top(self):
         return  self._check_side("Top")
 
     def set_bottom(self, color):
-        self._set_side("Bottom", color)
+        self.set_side("Bottom", color)
 
     def get_bottom(self):
-        return self._get_side("Bottom")
+        return self.get_side("Bottom")
 
     def check_bottom(self):
         return self._check_side("Bottom")
 
     def set_left(self, color):
-        self._set_side("Left", color)
+        self.set_side("Left", color)
 
     def get_left(self):
-        return self._get_side("Left")
+        return self.get_side("Left")
 
     def check_left(self):
         return self._check_side("Left")
 
     def set_right(self, color):
-        self._set_side("Right", color)
+        self.set_side("Right", color)
 
     def get_right(self):
-        return self._get_side("Right")
+        return self.get_side("Right")
 
     def check_right(self):
         return self._check_side("Right")

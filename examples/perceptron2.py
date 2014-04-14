@@ -114,13 +114,18 @@ class mlp:
         return values
 
 
-x = mlp([3, 4], 10)
+x = mlp([3, 1], 10)
 
 for z in range(10000):
     x.learn(0, 0, 1)
     x.learn(0, 1, 0)
     x.learn(1, 0, 0)
     x.learn(1, 1, 1)
+
+print(x.answer(0, 0))
+print(x.answer(0, 1))
+print(x.answer(1, 0))
+print(x.answer(1, 1))
 
 print(x.answer(0, 0, True))
 print(x.answer(0, 1, True))

@@ -12,6 +12,15 @@ class BCube:
     def turn_z(self, direction):
         raise NotImplementedError("Should be implemented")
 
+    def get_side(self, side):
+        raise NotImplementedError("Should be implemented")
+
+    def set_side(self, side, item):
+        raise NotImplementedError("Should be implemented")
+
+    def contains(self, item):
+        raise NotImplementedError("Should be implemented")
+
     def set_front(self, color):
         raise NotImplementedError("Should be implemented")
 

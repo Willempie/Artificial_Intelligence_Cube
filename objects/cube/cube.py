@@ -1,5 +1,5 @@
 from b_cube import BCube
-
+from helper import Helper
 
 class Cube(BCube):
 
@@ -12,6 +12,20 @@ class Cube(BCube):
         self._bottom = None
         self._left = None
         self._right = None
+
+    def set_side(self, side, item):
+        if side in Helper.CUBE_SIDES:
+            getattr(self, "set_"+side.lower())(item)
+
+    def get_side(self, side):
+        if side in Helper.CUBE_SIDES:
+            return getattr(self, "get_"+side.lower())()
+
+    def contains(self, item):
+        for side in Helper.CUBE_SIDES:
+            if item == self.get_side(side):
+                return True
+        return False
 
     def set_front(self, color):
         self._front = color

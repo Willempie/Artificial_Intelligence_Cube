@@ -1,7 +1,7 @@
 from visual import *
 from objects.cube.cube import Cube
 from b_v_cube import BVCube
-
+from helper import Helper
 
 class VCube(Cube, BVCube):
 
@@ -24,6 +24,14 @@ class VCube(Cube, BVCube):
 
     def set_color(self, box_color):
         self._center_box.color = box_color
+
+    def set_side(self, side, item):
+        if side in Helper.CUBE_SIDES:
+            getattr(self, "set_"+side.lower())(item)
+
+    def get_side(self, side):
+        if side in Helper.CUBE_SIDES:
+            return getattr(self, "get_"+side.lower())()
 
     def set_front(self, box_color):
         my_pos = self._pos + vector(0, 0, self._dimension / 2)
@@ -57,3 +65,6 @@ class VCube(Cube, BVCube):
 
     def rotate(self, box_angle, box_axis, box_origin):
         self.v_frame.rotate(angle=box_angle, axis=box_axis, origin=box_origin)
+
+    def contains__(self, item):
+        return self.get

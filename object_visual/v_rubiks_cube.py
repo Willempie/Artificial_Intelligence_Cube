@@ -7,7 +7,7 @@ from v_cube import VCube
 
 class VRubiksCube(RubiksCube, BVCube, BFps):
 
-    def __init__(self, cube_size=2, block_size=None, start_pos=None, block_color=None):
+    def __init__(self, cube_size=2, block_size=None, start_pos=None, block_color=None, reset_array=True):
         RubiksCube.__init__(self, cube_size, False)
         BVCube.__init__(self, start_pos, cube_size)
         BFps.__init__(self)
@@ -22,7 +22,8 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
         else:
             self._block_color = block_color
 
-        self.reset_array()
+        if reset_array:
+            self.reset_array()
 
     def reset_array(self):
         start_point = self._dimension*self._block_size/2
