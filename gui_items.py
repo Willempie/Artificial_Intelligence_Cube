@@ -16,11 +16,14 @@ class GuiItems:
     def gen_button(self, text, position_x, position_y):
         return wx.Button(self.__GUI_panel, label=text, pos=(position_x, position_y))
 
-    def gen_radiobox(self, panel, position_x, position_y, radio_size, style, options):
-        return wx.RadioBox(panel, pos=(position_x, position_y), size=radio_size, choices=options, style=style)
+    def gen_radiobox(self, position_x, position_y, radio_size, style, options):
+        return wx.RadioBox(self.__GUI_panel, pos=(position_x, position_y), size=radio_size, choices=options, style=style)
 
     def gen_slider(self, panel, position, slider_size, min_value, max_value):
         return wx.Slider(panel, pos=position, size=slider_size, minValue=min_value, maxValue=max_value)
+
+    def gen_combobox(self, position, size, choice_array):
+        return wx.ComboBox(self.__GUI_panel, pos=position, size=size, choices=choice_array, style=wx.CB_READONLY)
 
     def gen_textbox(self):
         return

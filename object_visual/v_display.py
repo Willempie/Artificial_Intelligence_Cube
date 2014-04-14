@@ -44,6 +44,20 @@ class VDisplay():
         gui_items.bind_element(y_button, wx.EVT_BUTTON, cube_handler.turn_y)  # Y
         gui_items.bind_element(z_button, wx.EVT_BUTTON, cube_handler.turn_z)  # Z
 
+        # generate dropdown menu
+        combo_box_items = []
+        for size in range(self.cube.get_size()):
+            combo_box_items.append(str(size+1))
+        combo_box = gui_items.gen_combobox((150, 10), (150, -1), combo_box_items)
+        # bind dropdown menu
+        gui_items.bind_element(combo_box, wx.EVT_COMBOBOX, cube_handler.set_index)
+
+        # generate radiobuttons for direction
+        directions = ['Clockwise', 'Counterclockwise']
+        radio_buttons = gui_items.gen_radiobox(150, 50, (180, -1), wx.RA_SPECIFY_ROWS, directions)
+        # bind radiobuttons
+        gui_items.bind_element(radio_buttons, wx.EVT_RADIOBOX, cube_handler.set_direction)
+
         mouse_handler = MouseHandler(cube_display.get_display())
 
 
