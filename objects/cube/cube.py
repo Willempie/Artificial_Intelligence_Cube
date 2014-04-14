@@ -27,42 +27,6 @@ class Cube(BCube):
                 return True
         return False
 
-    def set_front(self, color):
-        self._front = color
-
-    def get_front(self):
-        return self._front
-
-    def set_back(self, color):
-        self._back = color
-
-    def get_back(self):
-        return self._back
-
-    def set_top(self, color):
-        self._top = color
-
-    def get_top(self):
-        return self._top
-
-    def set_bottom(self, color):
-        self._bottom = color
-
-    def get_bottom(self):
-        return self._bottom
-
-    def set_left(self, color):
-        self._left = color
-
-    def get_left(self):
-        return self._left
-
-    def set_right(self, color):
-        self._right = color
-
-    def get_right(self):
-        return self._right
-
     def turn_x(self, direction):
         storage_front = self._front
         storage_top = self._top
@@ -113,6 +77,42 @@ class Cube(BCube):
             self._right = storage_bottom
             self._bottom = storage_left
             self._left = storage_top
+
+    def set_front(self, color):
+        self._front = color
+
+    def get_front(self):
+        return self._front
+
+    def set_back(self, color):
+        self._back = color
+
+    def get_back(self):
+        return self._back
+
+    def set_top(self, color):
+        self._top = color
+
+    def get_top(self):
+        return self._top
+
+    def set_bottom(self, color):
+        self._bottom = color
+
+    def get_bottom(self):
+        return self._bottom
+
+    def set_left(self, color):
+        self._left = color
+
+    def get_left(self):
+        return self._left
+
+    def set_right(self, color):
+        self._right = color
+
+    def get_right(self):
+        return self._right
 
     def my_print(self):
         print("Top    "+str(self._top))

@@ -51,6 +51,13 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                     self._array[x][y][0].set_back(color.yellow)
                     self._array[x][y][self._dimension-1].set_front(color.white)
 
+    def contains(self, item):
+        for x in range(self._dimension):
+            for y in range(self._dimension):
+                for z in range(self._dimension):
+                    if self._array[x][y][z].contains(item):
+                        return [x, y, z]
+        return False
 
     def set_cube_color(self, cube_color):
         for x in xrange(self._dimension):
