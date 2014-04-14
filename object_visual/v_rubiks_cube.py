@@ -22,10 +22,9 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
         else:
             self._block_color = block_color
 
-        if reset_array:
-            self.reset_array()
+        self.reset_array(reset_array)
 
-    def reset_array(self):
+    def reset_array(self, set_colors=True):
         start_point = self._dimension*self._block_size/2
         start_vector = self._pos - vector(start_point, start_point, start_point)
         half_block = vector(self._block_size/2, self._block_size/2, self._block_size/2)
@@ -40,16 +39,17 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                     self._array[x][y][z] = VCube(current_block_pos,self._block_color,self._block_size*2)
 
         # set side colors
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                self._array[0][x][y].set_left(color.blue)
-                self._array[self._dimension-1][x][y].set_right(color.green)
+        if set_colors:
+            for x in xrange(self._dimension):
+                for y in xrange(self._dimension):
+                    self._array[0][x][y].set_left(color.blue)
+                    self._array[self._dimension-1][x][y].set_right(color.green)
 
-                self._array[x][0][y].set_bottom(color.orange)
-                self._array[x][self._dimension-1][y].set_top(color.red)
+                    self._array[x][0][y].set_bottom(color.orange)
+                    self._array[x][self._dimension-1][y].set_top(color.red)
 
-                self._array[x][y][0].set_back(color.yellow)
-                self._array[x][y][self._dimension-1].set_front(color.white)
+                    self._array[x][y][0].set_back(color.yellow)
+                    self._array[x][y][self._dimension-1].set_front(color.white)
 
 
     def set_cube_color(self, cube_color):
