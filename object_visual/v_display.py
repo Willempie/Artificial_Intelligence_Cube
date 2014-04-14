@@ -12,9 +12,10 @@ class VDisplay():
 
     __default_button_width = 88
     __default_button_height = 26
+    cube = None
 
     def __init__(self):
-
+        '''
         # create cube display
         cube_display = CubeDisplay()
 
@@ -59,8 +60,17 @@ class VDisplay():
         gui_items.bind_element(radio_buttons, wx.EVT_RADIOBOX, cube_handler.set_direction)
 
         mouse_handler = MouseHandler(cube_display.get_display())
+        '''
 
+    def create_input_display(self):
+         # create cube display
+        cube_display = CubeDisplay()
 
+        # create GUI
+        cube_gui = CubeGui("Artificial Intelligence Cube")
+
+        # generate cube
+        self.cube = VRubiksCube(3)
 
     '''
     def __init__(self):
