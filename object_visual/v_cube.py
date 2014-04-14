@@ -33,6 +33,9 @@ class VCube(Cube, BVCube):
         if side in Helper.CUBE_SIDES:
             return getattr(self, "get_"+side.lower())()
 
+    def contains(self, item):
+        return item in self.v_frame.objects
+
     def set_front(self, box_color):
         my_pos = self._pos + vector(0, 0, self._dimension / 2)
         my_dimension = vector(self._dimension, self._dimension, self._thickness) - vector(self._padding, self._padding, 0)
