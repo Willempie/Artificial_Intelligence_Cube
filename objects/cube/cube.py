@@ -24,7 +24,7 @@ class Cube(BCube):
     def contains(self, item):
         for side in Helper.CUBE_SIDES:
             if item == self.get_side(side):
-                return True
+                return side
         return False
 
     def turn_x(self, direction):

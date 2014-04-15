@@ -28,12 +28,10 @@ class RubiksCube(BRubiksCube):
                 for z in xrange(self._dimension):
                     self._array[x][y][z] = Cube()
 
-        self.set_left(1)
-        self.set_right(2)
-        self.set_bottom(3)
-        self.set_top(4)
-        self.set_back(5)
-        self.set_front(6)
+        counter = 1
+        for side in Helper.CUBE_SIDES:
+            self.set_side(side, counter)
+            counter += 1
 
     def get_size(self):
         return self._dimension
@@ -85,6 +83,20 @@ class RubiksCube(BRubiksCube):
                 if side == "Right":
                     self._array[self._dimension-1][x][y].set_right(color)
 
+    def set_part(self, side, x, y, color):
+        if side == "Front":
+            self._array[x][y][self._dimension-1].set_front(color)
+        if side == "Back":
+            self._array[x][y][0].set_back(color)
+        if side == "Top":
+            self._array[x][self._dimension-1][y].set_top(color)
+        if side == "Bottom":
+            self._array[x][0][y].set_bottom(color)
+        if side == "Left":
+            self._array[0][x][y].set_left(color)
+        if side == "Right":
+            self._array[self._dimension-1][x][y].set_right(color)
+
     def get_side(self, side):
         array = [[None for k in xrange(self._dimension)] for i in xrange(self._dimension)]
 
@@ -105,19 +117,7 @@ class RubiksCube(BRubiksCube):
         return array
 
     def _check_side(self, side):
-        if side == "Front":
-            array = self.get_front()
-        if side == "Back":
-            array = self.get_back()
-        if side == "Top":
-            array = self.get_top()
-        if side == "Bottom":
-            array = self.get_bottom()
-        if side == "Left":
-            array = self.get_left()
-        if side == "Right":
-            array = self.get_right()
-
+        array = self.get_side(side)
         return Helper.array_2d_all_same(array, self._dimension)
 
     def contains(self, item):
@@ -126,7 +126,7 @@ class RubiksCube(BRubiksCube):
             for x in range(self._dimension):
                 for y in range(self._dimension):
                     if array[x][y] == item:
-                        return  True
+                        return [side, x, y]
         return False
 
     def solved(self):
