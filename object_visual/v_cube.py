@@ -5,7 +5,7 @@ from helper import Helper
 
 class VCube(Cube, BVCube):
 
-    _thickness = 0.1
+    _thickness = 0.3
     _padding = 0.25
 
     def __init__(self, base_pos=None, base_color=None, base_dimension=None):

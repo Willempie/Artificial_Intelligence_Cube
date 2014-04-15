@@ -28,19 +28,22 @@ class MouseHandler():
         # ['Rood', 'Blauw', 'Groen', 'Geel', 'Oranje', 'Wit']
         selected_color = self.__combobox_colors.GetValue()
         clicked_box = self.__cube.contains(event.pick)
-        if selected_color == "Rood":
-            self.__cube.set_side("Front", color.red)
-        elif selected_color == "Blauw":
-            self.__cube.set_side("Front", color.blue)
 
-        elif selected_color == "Groen":
-            print 'groen'
-        elif selected_color == "Geel":
-            print 'geel'
-        elif selected_color == "Oranje":
-            print 'oranje'
-        elif selected_color == "Wit":
-            print 'wit'
+        if clicked_box != False:
+            if selected_color == "Rood":
+                self.__cube.get_side(clicked_box[0])[clicked_box[1]][clicked_box[2]].color = color.red
+                # self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.red)
+            elif selected_color == "Blauw":
+                self.__cube.get_side(clicked_box[0])[clicked_box[1]][clicked_box[2]].color = color.blue
+                # self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.blue)
+            elif selected_color == "Groen":
+                print 'groen'
+            elif selected_color == "Geel":
+                print 'geel'
+            elif selected_color == "Oranje":
+                print 'oranje'
+            elif selected_color == "Wit":
+                print 'wit'
 
     def grab(self, event):
         #print("Block Address: ", event.pick)
