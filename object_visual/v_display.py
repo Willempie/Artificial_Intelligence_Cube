@@ -63,18 +63,25 @@ class VDisplay():
         '''
 
     def create_input_display(self):
-         # create cube display
+
+        # create cube display
         cube_display = CubeDisplay()
 
         # create GUI
         cube_gui = CubeGui("Artificial Intelligence Cube")
+
+        # GUI items
+        gui_items = GuiItems(cube_gui, cube_gui.get_window_panel())
+        combo_box_items = ['Rood', 'Blauw', 'Groen', 'Geel', 'Oranje', 'Wit']
+        combo_box = gui_items.gen_combobox((20, 10), (150, -1), combo_box_items)
+        combo_box.SetSelection(0)
 
         # generate cube
         self.cube = VRubiksCube(3, None, None, None, False)
 
         # mouse handler
         mouse_handler = MouseHandler(cube_display.get_display())
-        mouse_handler.bind_mouse_click()
+        mouse_handler.bind_mouse_click(self.cube, combo_box)
 
     '''
     def __init__(self):
