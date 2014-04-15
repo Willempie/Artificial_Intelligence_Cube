@@ -77,7 +77,7 @@ class VDisplay():
         combo_box.SetSelection(0)
 
         # generate cube
-        self.cube = VRubiksCube(3, None, None, None, True)
+        self.cube = VRubiksCube(3, None, None, None, False)
 
         # mouse handler
         mouse_handler = MouseHandler(cube_display.get_display())

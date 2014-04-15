@@ -24,7 +24,7 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
 
         self.reset_array(reset_array)
 
-    def reset_array(self, set_colors=True):
+    def reset_array(self, set_colors):
         start_point = self._dimension*self._block_size/2
         start_vector = self._pos - vector(start_point, start_point, start_point)
         half_block = vector(self._block_size/2, self._block_size/2, self._block_size/2)
@@ -39,17 +39,38 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                     self._array[x][y][z] = VCube(current_block_pos,self._block_color,self._block_size*2)
 
         # set side colors
-        if set_colors:
-            for x in xrange(self._dimension):
-                for y in xrange(self._dimension):
-                    self._array[0][x][y].set_left(color.blue)
-                    self._array[self._dimension-1][x][y].set_right(color.green)
+        for side in Helper.CUBE_SIDES:
+            if set_colors:
+                self.set_side(side, Helper.CUBE_COLOR[Helper.CUBE_SIDES.index(side)], True)
+            else:
+                self.set_side(side, color.white, True)
 
-                    self._array[x][0][y].set_bottom(color.orange)
-                    self._array[x][self._dimension-1][y].set_top(color.red)
+    def set_part(self, side, x, y, color, create_mode=False):
+        if create_mode:
+            RubiksCube.set_part(self, side, x, y, color)
+        else:
+            if side == "Front":
+                self._array[x][y][self._dimension-1].get_front().color = color
+            if side == "Back":
+                self._array[x][y][0].get_back().color = color
+            if side == "Top":
+                self._array[x][self._dimension-1][y].get_top().color = color
+            if side == "Bottom":
+                self._array[x][0][y].get_bottom().color = color
+            if side == "Left":
+                self._array[0][x][y].get_left().color = color
+            if side == "Right":
+                self._array[self._dimension-1][x][y].get_right().color = color
 
-                    self._array[x][y][0].set_back(color.yellow)
-                    self._array[x][y][self._dimension-1].set_front(color.white)
+    def set_side(self, side, input_color, create_mode=False):
+        for x in xrange(self._dimension):
+            for y in xrange(self._dimension):
+                if isinstance(input_color, list):
+                    color = input_color[x][y]
+                else:
+                    color = input_color
+
+                self.set_part(side, x, y, color, create_mode)
 
     def set_cube_color(self, cube_color):
         for x in xrange(self._dimension):

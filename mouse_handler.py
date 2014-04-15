@@ -1,8 +1,6 @@
 from visual_common.controls import color
 from visual_common.cvisual import vector
-
-__author__ = 'Willem'
-
+from helper import Helper
 
 class MouseHandler():
 
@@ -25,25 +23,13 @@ class MouseHandler():
         self.__combobox_colors = combobox
 
     def mouse_block_click(self, event):
-        # ['Rood', 'Blauw', 'Groen', 'Geel', 'Oranje', 'Wit']
         selected_color = self.__combobox_colors.GetValue()
         clicked_box = self.__cube.contains(event.pick)
 
         if clicked_box != False:
-            if selected_color == "Rood":
-                self.__cube.get_side(clicked_box[0])[clicked_box[1]][clicked_box[2]].color = color.red
-                # self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.red)
-            elif selected_color == "Blauw":
-                self.__cube.get_side(clicked_box[0])[clicked_box[1]][clicked_box[2]].color = color.blue
-                # self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.blue)
-            elif selected_color == "Groen":
-                print 'groen'
-            elif selected_color == "Geel":
-                print 'geel'
-            elif selected_color == "Oranje":
-                print 'oranje'
-            elif selected_color == "Wit":
-                print 'wit'
+            current_color = Helper.CUBE_COLOR[Helper.CUBE_COLOR_NAME.index(selected_color)]
+            self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], current_color)
+
 
     def grab(self, event):
         #print("Block Address: ", event.pick)

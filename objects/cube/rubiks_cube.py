@@ -70,18 +70,7 @@ class RubiksCube(BRubiksCube):
                 else:
                     color = input_color
 
-                if side == "Front":
-                    self._array[x][y][self._dimension-1].set_front(color)
-                if side == "Back":
-                    self._array[x][y][0].set_back(color)
-                if side == "Top":
-                    self._array[x][self._dimension-1][y].set_top(color)
-                if side == "Bottom":
-                    self._array[x][0][y].set_bottom(color)
-                if side == "Left":
-                    self._array[0][x][y].set_left(color)
-                if side == "Right":
-                    self._array[self._dimension-1][x][y].set_right(color)
+                self.set_part(side, x, y, color)
 
     def set_part(self, side, x, y, color):
         if side == "Front":
