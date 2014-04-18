@@ -5,7 +5,7 @@ from helper import Helper
 
 class RubiksCube(BRubiksCube):
 
-    def __init__(self, size=None, reset_array=True):
+    def __init__(self, size=None, set_color=True):
         BRubiksCube.__init__(self)
 
         if size is None or size < 2:
@@ -18,20 +18,22 @@ class RubiksCube(BRubiksCube):
                         for i in xrange(self._dimension)]
                        for j in xrange(self._dimension)]
 
-        if reset_array:
-            self.reset_array()
-
-    def reset_array(self):
-        # generate all the cubes
+       # generate all the cubes
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 for z in xrange(self._dimension):
                     self._array[x][y][z] = Cube()
 
-        counter = 1
+        self.reset_array(set_color)
+
+    def reset_array(self, set_color):
+        counter = 0
         for side in Helper.CUBE_SIDES:
-            self.set_side(side, counter)
-            counter += 1
+            if set_color:
+                self.set_side(side, counter)
+                counter += 1
+            else:
+                self.set_side(side, counter)
 
     def get_size(self):
         return self._dimension
@@ -52,6 +54,15 @@ class RubiksCube(BRubiksCube):
             storage = zip(*storage)[::-1]
         if direction == 1:
             storage = zip(*storage[::-1])
+
+        for x in xrange(self._dimension):
+            for y in xrange(self._dimension):
+                if xyz == 'x':
+                    storage[x][y].turn_x(direction)
+                if xyz == 'y':
+                    storage[x][y].turn_y(direction)
+                if xyz == 'z':
+                    storage[x][y].turn_z(direction)
 
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):

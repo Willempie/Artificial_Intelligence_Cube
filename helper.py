@@ -4,8 +4,8 @@ from visual import *
 class Helper:
 
     CUBE_SIDES = ["Front", "Back", "Top", "Bottom", "Left", "Right"]
-    CUBE_COLOR_NAME = ['Rood', 'Oranje', 'Geel', 'Wit', 'Blauw', 'Groen']
-    CUBE_COLOR = [color.red, color.orange, color.yellow, color.white, color.blue, color.green]
+    CUBE_COLOR_NAME = ['Rood', 'Paars', 'Geel', 'Wit', 'Blauw', 'Groen']
+    CUBE_COLOR = [color.red, (1, 0, 1), color.yellow, color.white, color.blue, color.green]
 
     @staticmethod
     def array_2d_all_same(input_array, size):

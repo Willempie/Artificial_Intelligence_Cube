@@ -6,7 +6,7 @@ class BRubiksCube(BCube):
     def __init__(self):
         BCube.__init__(self)
 
-    def reset_array(self):
+    def reset_array(self, set_color):
         raise NotImplementedError("Should be implemented")
 
     def set_part(self, side, x, y, color):

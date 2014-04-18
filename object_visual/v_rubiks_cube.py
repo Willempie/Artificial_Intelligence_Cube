@@ -7,7 +7,7 @@ from helper import Helper
 
 class VRubiksCube(RubiksCube, BVCube, BFps):
 
-    def __init__(self, cube_size=2, block_size=None, start_pos=None, block_color=None, reset_array=True):
+    def __init__(self, cube_size=2, block_size=None, start_pos=None, block_color=None, set_colors=True):
         RubiksCube.__init__(self, cube_size, False)
         BVCube.__init__(self, start_pos, cube_size)
         BFps.__init__(self)
@@ -22,9 +22,6 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
         else:
             self._block_color = block_color
 
-        self.reset_array(reset_array)
-
-    def reset_array(self, set_colors):
         start_point = self._dimension*self._block_size/2
         start_vector = self._pos - vector(start_point, start_point, start_point)
         half_block = vector(self._block_size/2, self._block_size/2, self._block_size/2)
@@ -38,12 +35,15 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
 
                     self._array[x][y][z] = VCube(current_block_pos,self._block_color,self._block_size*2)
 
+        self.reset_array(set_colors)
+
+    def reset_array(self, set_colors):
         # set side colors
         for side in Helper.CUBE_SIDES:
             if set_colors:
                 self.set_side(side, Helper.CUBE_COLOR[Helper.CUBE_SIDES.index(side)], True)
             else:
-                self.set_side(side, color.white, True)
+                self.set_side(side, color.black, True)
 
     def set_part(self, side, x, y, color, create_mode=False):
         if create_mode:
