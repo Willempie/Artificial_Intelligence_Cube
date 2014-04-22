@@ -57,12 +57,7 @@ class RubiksCube(BRubiksCube):
 
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
-                if xyz == 'x':
-                    storage[x][y].turn_x(direction)
-                if xyz == 'y':
-                    storage[x][y].turn_y(direction)
-                if xyz == 'z':
-                    storage[x][y].turn_z(direction)
+                storage[x][y].turn(xyz, direction)
 
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):

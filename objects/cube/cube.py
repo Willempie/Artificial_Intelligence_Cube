@@ -27,6 +27,14 @@ class Cube(BCube):
                 return side
         return False
 
+    def turn(self, xyz, direction):
+        if xyz == 'x':
+            self.turn_x(direction)
+        if xyz == 'y':
+            self.turn_y(direction)
+        if xyz == 'z':
+            self.turn_z(direction)
+
     def turn_x(self, direction):
         storage_front = self._front
         storage_top = self._top
