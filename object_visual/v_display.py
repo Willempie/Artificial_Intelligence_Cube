@@ -1,4 +1,5 @@
 from visual import *
+from logic.handling.step_handling import StepHandling
 from object_visual.v_rubiks_cube import VRubiksCube
 from cubegui import *
 from cube_display import *
@@ -65,16 +66,32 @@ class VDisplay():
 
     def create_input_display(self):
 
-        # create cube display
-        cube_display = CubeDisplay()
+
 
         # create GUI
         cube_gui = CubeGui("Artificial Intelligence Cube")
+
+        # create cube display
+        cube_display = CubeDisplay(cube_gui.get_window())
+
+        # step handler
+        step_handling = StepHandling()
 
         # GUI items
         gui_items = GuiItems(cube_gui, cube_gui.get_window_panel())
         combo_box = gui_items.gen_combobox((20, 10), (150, -1), Helper.CUBE_COLOR_NAME)
         combo_box.SetSelection(0)
+
+        gui_items.gen_menu(cube_gui.get_window())
+
+        # buttons
+        start_cube_button = gui_items.gen_button("Start Cube *", 20, 50)
+        gui_items.bind_element(start_cube_button, wx.EVT_BUTTON, step_handling.start_cube)
+        result_cube_button = gui_items.gen_button("Result Cube *", 20, 80)
+        gui_items.bind_element(result_cube_button, wx.EVT_BUTTON, step_handling.result_cube)
+        code_button = gui_items.gen_button("Code *", 20, 110)
+        gui_items.bind_element(code_button, wx.EVT_BUTTON, step_handling.cube)
+
 
         # generate cube
         self.cube = VRubiksCube(3, None, None, None, False)

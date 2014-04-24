@@ -1,4 +1,5 @@
 import wx
+from logic.handling.files import HandleFiles
 
 
 class GuiItems:
@@ -9,6 +10,27 @@ class GuiItems:
     def __init__(self, gui, gui_panel):
         self.__GUI = gui
         self.__GUI_panel = gui_panel
+
+    def gen_menu(self, window):
+
+        handle_files = HandleFiles()
+
+        m = window.menubar  # Refers to the menubar, which can have several menus
+
+        # remove default file menu
+        m.Remove(0)
+
+        menu = wx.Menu()
+        menu_item_new = menu.Append(-1, 'New', 'New XML file for Cube')
+
+        window.win.Bind(wx.EVT_MENU, getattr(handle_files, "open"), menu_item_new)
+        menu_item_open = menu.Append(-1, 'Open', 'Open XML file for Cube')
+        menu_item_save = menu.Append(-1, 'Save', 'Save XML file for Cube')
+        window.win.Bind(wx.EVT_MENU, getattr(handle_files, "save"), menu_item_save)
+
+        menu_item_close = menu.Append(-1, 'Close', 'Close XML file for Cube')
+
+        m.Insert(0, menu, "Bestand")
 
     def gen_text(self):
         return
