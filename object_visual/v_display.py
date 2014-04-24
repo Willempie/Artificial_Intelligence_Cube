@@ -6,6 +6,7 @@ from cube_handler import *
 from gui_items import *
 from keyboard_handler import *
 from mouse_handler import *
+from helper import *
 
 
 class VDisplay():
@@ -72,8 +73,7 @@ class VDisplay():
 
         # GUI items
         gui_items = GuiItems(cube_gui, cube_gui.get_window_panel())
-        combo_box_items = ['Rood', 'Blauw', 'Groen', 'Geel', 'Oranje', 'Wit']
-        combo_box = gui_items.gen_combobox((20, 10), (150, -1), combo_box_items)
+        combo_box = gui_items.gen_combobox((20, 10), (150, -1), Helper.CUBE_COLOR_NAME)
         combo_box.SetSelection(0)
 
         # generate cube
