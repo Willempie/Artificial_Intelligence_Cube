@@ -1,9 +1,9 @@
 import xml.etree.ElementTree as ET
-from xml_object import XmlObject
-from cube_step import Step
 from os import listdir
 from os import path
 
+from objects.xml.xml_move import XmlObject
+from objects.xml.xml_step import Step
 from objects.cube.rubiks_cube import RubiksCube
 
 

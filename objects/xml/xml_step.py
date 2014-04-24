@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
+from abstact_xml import AbstractXml
 
-class Step:
+
+class Step(AbstractXml):
 
     def __init__(self, axis, rows, direction):
         if axis.lower() in ['x','y','z']:
@@ -13,6 +15,11 @@ class Step:
 
         if direction in [-1, 1]:
             self.direction = direction
+
+    def from_xml(self, xml_object):
+        self.axis = xml_object.find("Axis").text
+        self.rows = xml_object.find("Row").text
+        self.direction = xml_object.find("Direction").text
 
     def get_xml(self):
         element = ET.Element("Step")
