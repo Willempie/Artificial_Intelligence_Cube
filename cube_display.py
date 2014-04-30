@@ -16,7 +16,7 @@ class CubeDisplay():
         self.__display = display(window=w, x=10, y=y, width=self.__L-2*self.__d,
                                  height=self.__L-2*self.__d,
                                  background=color.gray(0.8), range=(25, 25, 25), forward=(0, 1, 2),
-                                 lights=[], ambient=color.gray(1))
+                                 lights=[], ambient=color.gray(1), userzoom = False)
 
     def get_display(self):
         return self.__display
