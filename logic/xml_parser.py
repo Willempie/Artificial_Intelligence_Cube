@@ -59,12 +59,3 @@ xml_reader = XmlParser()
 print(xml_reader.xml_files)
 #xml_reader.new_file("hello3",d)
 xml_reader.read_file("hello3")
-
-
-
-
-
-
-'''
-
-'''
