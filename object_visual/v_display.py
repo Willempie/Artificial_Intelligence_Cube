@@ -65,17 +65,11 @@ class VDisplay():
         '''
 
     def create_input_display(self):
-
-
-
         # create GUI
         cube_gui = CubeGui("Artificial Intelligence Cube")
 
         # create cube display
         cube_display = CubeDisplay(cube_gui.get_window())
-
-        # step handler
-        step_handling = StepHandling()
 
         # GUI items
         gui_items = GuiItems(cube_gui, cube_gui.get_window_panel())
@@ -84,6 +78,13 @@ class VDisplay():
 
         gui_items.gen_menu(cube_gui.get_window())
 
+        # generate cube
+        self.cube = VRubiksCube(3, None, None, None, False)
+        self.cube.set_front(color.red)
+
+        # step handler
+        step_handling = StepHandling(self)
+
         # buttons
         start_cube_button = gui_items.gen_button("Start Cube *", 20, 50)
         gui_items.bind_element(start_cube_button, wx.EVT_BUTTON, step_handling.start_cube)
@@ -91,10 +92,6 @@ class VDisplay():
         gui_items.bind_element(result_cube_button, wx.EVT_BUTTON, step_handling.result_cube)
         code_button = gui_items.gen_button("Code *", 20, 110)
         gui_items.bind_element(code_button, wx.EVT_BUTTON, step_handling.cube)
-
-
-        # generate cube
-        self.cube = VRubiksCube(3, None, None, None, False)
 
         # mouse handler
         mouse_handler = MouseHandler(cube_display.get_display())

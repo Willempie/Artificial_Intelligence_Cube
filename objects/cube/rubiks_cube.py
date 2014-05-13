@@ -8,11 +8,13 @@ class RubiksCube(BRubiksCube):
     def __init__(self, size=None, set_color=True):
         BRubiksCube.__init__(self)
 
+        #Minimum size is 2
         if size is None or size < 2:
             self._dimension = 2
         else:
             self._dimension = size
 
+        #Generate empty array
         self._array = [[[None
                          for k in xrange(self._dimension)]
                         for i in xrange(self._dimension)]
@@ -27,6 +29,7 @@ class RubiksCube(BRubiksCube):
         self.reset_array(set_color)
 
     def reset_array(self, set_color):
+        #Generate the sides, all 0 if set_color==False
         counter = 0
         for side in Helper.CUBE_SIDES:
             if set_color:
@@ -39,8 +42,12 @@ class RubiksCube(BRubiksCube):
         return self._dimension
 
     def _rotate_array(self, xyz, index, direction):
+        #Rotate the storage array depending on axis, index and direction
+
+        #Generate temp storage
         storage = [[None for k in xrange(self._dimension)] for j in xrange(self._dimension)]
 
+        #Fetch current slice
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 if xyz == 'x':
@@ -50,15 +57,18 @@ class RubiksCube(BRubiksCube):
                 if xyz == 'z':
                     storage[x][y] = self._array[x][y][index]
 
+        #Rotate current slice
         if direction == -1:
             storage = zip(*storage)[::-1]
         if direction == 1:
             storage = zip(*storage[::-1])
 
+        #Rotate current slice parts
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 storage[x][y].turn(xyz, direction)
 
+        #Write back the new slice
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 if xyz == 'x':
@@ -69,6 +79,7 @@ class RubiksCube(BRubiksCube):
                     self._array[x][y][index] = storage[x][y]
 
     def set_side(self, side, input_color):
+        #Set side depending on the side and input_color
         for x in xrange(self._dimension):
             for y in xrange(self._dimension):
                 if isinstance(input_color, list):
@@ -79,6 +90,7 @@ class RubiksCube(BRubiksCube):
                 self.set_part(side, x, y, color)
 
     def set_part(self, side, x, y, color):
+        #Set a single part on a cube depending on the side, x, y, color.
         if side == "Front":
             self._array[x][y][self._dimension-1].set_front(color)
         if side == "Back":
@@ -93,6 +105,7 @@ class RubiksCube(BRubiksCube):
             self._array[self._dimension-1][x][y].set_right(color)
 
     def get_side(self, side):
+        #Get a complete side from the RubiksCube depending on the side
         array = [[None for k in xrange(self._dimension)] for i in xrange(self._dimension)]
 
         for x in xrange(self._dimension):
@@ -112,10 +125,12 @@ class RubiksCube(BRubiksCube):
         return array
 
     def _check_side(self, side):
+        #Checks if the given side has only 1 color
         array = self.get_side(side)
         return Helper.array_2d_all_same(array, self._dimension)
 
     def contains(self, item):
+        #Checks if the this RubiksCube contains the given item and returns the [side, x, y]
         for side in Helper.CUBE_SIDES:
             array = self.get_side(side)
             for x in range(self._dimension):
@@ -125,6 +140,7 @@ class RubiksCube(BRubiksCube):
         return False
 
     def solved(self):
+        #Checks if this RubiksCube is solved
         return self.check_top() and \
                self.check_bottom() and \
                self.check_front() and \

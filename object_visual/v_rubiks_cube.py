@@ -78,32 +78,70 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                 for z in xrange(self._dimension):
                     self._array[x][y][z].set_color(cube_color)
 
+    def turn(self, xyz, index, direction):
+        if xyz == 'x':
+            self.turn_x(index, direction)
+        if xyz == 'y':
+            self.turn_y(index, direction)
+        if xyz == 'z':
+            self.turn_z(index, direction)
+
     def turn_x(self, index, direction):
         for r in xrange(self.fps):
             rate(self.rate)
             for x in xrange(self._dimension):
                 for y in xrange(self._dimension):
-                    self._array[index][x][y].rotate(self.degrees90/self.fps,
-                                                    vector(direction*-1, 0, 0),
-                                                    self._pos)
-        RubiksCube.turn_x(self, index, direction)
+                    if index >= 0:
+                        self._array[index][x][y].rotate(self.degrees90/self.fps,
+                                                        vector(direction*-1, 0, 0),
+                                                        self._pos)
+                    else:
+                        for rows in range(self._dimension):
+                            self._array[rows][x][y].rotate(self.degrees90/self.fps,
+                                                            vector(direction*-1, 0, 0),
+                                                            self._pos)
+        if index >= 0:
+            RubiksCube.turn_x(self, index, direction)
+        else:
+            for rows in range(self._dimension):
+                RubiksCube.turn_x(self, rows, direction)
 
     def turn_y(self, index, direction):
         for r in xrange(self.fps):
             rate(self.rate)
             for x in xrange(self._dimension):
                 for y in xrange(self._dimension):
-                    self._array[x][index][y].rotate(self.degrees90/self.fps,
-                                                    vector(0, direction*-1, 0),
-                                                    self._pos)
-        RubiksCube.turn_y(self, index, direction)
+                    if index >= 0:
+                        self._array[x][index][y].rotate(self.degrees90/self.fps,
+                                                        vector(0, direction*-1, 0),
+                                                        self._pos)
+                    else:
+                        for rows in range(self._dimension):
+                            self._array[x][rows][y].rotate(self.degrees90/self.fps,
+                                                            vector(0, direction*-1, 0),
+                                                            self._pos)
+        if index >= 0:
+            RubiksCube.turn_y(self, index, direction)
+        else:
+            for rows in range(self._dimension):
+                RubiksCube.turn_y(self, rows, direction)
 
     def turn_z(self, index, direction):
         for r in xrange(self.fps):
             rate(self.rate)
             for x in xrange(self._dimension):
                 for y in xrange(self._dimension):
-                    self._array[x][y][index].rotate(self.degrees90/self.fps,
-                                                    vector(0, 0, direction*-1),
-                                                    self._pos)
-        RubiksCube.turn_z(self, index, direction)
+                    if index >= 0:
+                        self._array[x][y][index].rotate(self.degrees90/self.fps,
+                                                        vector(0, 0, direction*-1),
+                                                        self._pos)
+                    else:
+                        for rows in range(self._dimension):
+                            self._array[x][y][rows].rotate(self.degrees90/self.fps,
+                                                            vector(0, 0, direction*-1),
+                                                            self._pos)
+        if index >= 0:
+            RubiksCube.turn_z(self, index, direction)
+        else:
+            for rows in range(self._dimension):
+                RubiksCube.turn_z(self, rows, direction)

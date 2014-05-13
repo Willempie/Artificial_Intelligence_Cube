@@ -11,12 +11,23 @@ class RandomXmlGenerator:
 
     def set_random_limits(self):
         self.vehicles = 500
+        self.startTime = time
         self.timeSpan = 200
         self.spawnTimer = 5
         self.multiSpawn = True
         self.multiSpawnLimit = 5
 
         self.spawnRates = [1,1,1,1,1]
+        print self.startTime.strftime("%Y-%m-%d %H:%M:%S")
+        self.startTime.sleep(1)
+        self.startTime.sleep(1)
+        self.startTime.sleep(1)
+        self.startTime.sleep(1)
+        print self.startTime.strftime("%Y-%m-%d %H:%M:%S")
+        #for x in range(10000000):
+        #    randomNumb = x * x * x * x * x
+        #print self.startTime.strftime("%Y-%m-%d %H:%M:%S")
+
 
     @staticmethod
     def toXml(i_type, i_location, i_direction, i_time):
@@ -55,6 +66,6 @@ class RandomXmlGenerator:
         tree = ET.ElementTree(data)
         tree.write(current_file_name, "utf-8", True)
 
-x = RandomXmlGenerator(1, "Willem")
+x = RandomXmlGenerator("Willem")
 x.set_random_limits()
-x.generate()
+#x.generate()

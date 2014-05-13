@@ -3,6 +3,9 @@ class BCube:
     def __init__(self):
         pass
 
+    def turn(self, xyz, direction):
+        raise NotImplementedError("Should be implemented")
+
     def turn_x(self, direction):
         raise NotImplementedError("Should be implemented")
 

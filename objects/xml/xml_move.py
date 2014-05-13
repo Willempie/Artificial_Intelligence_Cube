@@ -25,6 +25,10 @@ class XmlObject(AbstractXml):
 
         self._codes = []
 
+    def set_size(self, size):
+        if size > 2:
+            self._size = size
+
     def set_start(self, rubikscube, turn_cube=None):
         self._start_cube = rubikscube
         self._start_cube_turn = turn_cube

@@ -6,6 +6,7 @@ class Cube(BCube):
     def __init__(self):
         BCube.__init__(self)
 
+        #Generate all vars
         self._front = None
         self._back = None
         self._top = None
@@ -14,20 +15,24 @@ class Cube(BCube):
         self._right = None
 
     def set_side(self, side, item):
+        #set side depending on the input string
         if side in Helper.CUBE_SIDES:
             getattr(self, "set_"+side.lower())(item)
 
     def get_side(self, side):
+        #get side depending on the input string
         if side in Helper.CUBE_SIDES:
             return getattr(self, "get_"+side.lower())()
 
     def contains(self, item):
+        #Returns if this cube contains the input item
         for side in Helper.CUBE_SIDES:
             if item == self.get_side(side):
                 return side
         return False
 
     def turn(self, xyz, direction):
+        #Turns side depending on the axis and the direction
         if xyz == 'x':
             self.turn_x(direction)
         if xyz == 'y':
@@ -36,6 +41,7 @@ class Cube(BCube):
             self.turn_z(direction)
 
     def turn_x(self, direction):
+        #Turn x axis in the given direction
         storage_front = self._front
         storage_top = self._top
         storage_back = self._back
@@ -53,6 +59,7 @@ class Cube(BCube):
             self._bottom = storage_front
 
     def turn_y(self, direction):
+        #Turn y axis in the given direction
         storage_left = self._left
         storage_back = self._back
         storage_right = self._right
@@ -70,6 +77,7 @@ class Cube(BCube):
             self._front = storage_left
 
     def turn_z(self, direction):
+        #Turn z axis in the given direction
         storage_top = self._top
         storage_right = self._right
         storage_bottom = self._bottom
@@ -86,6 +94,7 @@ class Cube(BCube):
             self._bottom = storage_left
             self._left = storage_top
 
+    #Getters and Setters
     def set_front(self, color):
         self._front = color
 

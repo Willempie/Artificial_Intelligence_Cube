@@ -3,7 +3,7 @@ from visual import *
 
 class CubeGui:
 
-    __L = 250  # length for window
+    __L = 400  # length for window
     __d = 20
 
     __w = None
