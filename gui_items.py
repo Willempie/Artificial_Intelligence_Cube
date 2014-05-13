@@ -32,6 +32,12 @@ class GuiItems:
 
         m.Insert(0, menu, "Bestand")
 
+    def add_panel(self, position_x, position_y, panel_size):
+        return wx.Panel(parent=self.__GUI_panel, pos=(position_x, position_y), size=panel_size)
+
+    def gen_box_sizer(self, orient):
+        return wx.BoxSizer(orient)
+
     def gen_text(self):
         return
 
@@ -47,8 +53,8 @@ class GuiItems:
     def gen_combobox(self, position, size, choice_array):
         return wx.ComboBox(self.__GUI_panel, pos=position, size=size, choices=choice_array, style=wx.CB_READONLY)
 
-    def gen_textbox(self):
-        return
+    def gen_textbox(self, position_x, position_y, textbox_size, style):
+        return wx.TextCtrl(self.__GUI_panel, pos=(position_x, position_y), size=textbox_size, style=style)
 
     def bind_element(self, element, event, method):
         element.Bind(event, method)

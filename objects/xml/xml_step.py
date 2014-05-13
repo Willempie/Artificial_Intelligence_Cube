@@ -8,10 +8,7 @@ class Step(AbstractXml):
         if axis.lower() in ['x','y','z']:
             self.axis = axis.lower()
 
-        if rows == 'All' or rows == -1:
-            self.rows = [-1]
-        else:
-            self.rows = rows
+        self.rows = rows
 
         if direction in [-1, 1]:
             self.direction = direction
