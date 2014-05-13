@@ -19,15 +19,23 @@ class XmlObject(AbstractXml):
         self._size = size
 
         self._start_cube = None
+        self._start_cube_turn =None
         self._result_cube = None
+        self._result_cube_turn =None
 
         self._codes = []
 
-    def set_start(self, rubikscube):
-        self._start_cube = rubikscube
+    def set_size(self, size):
+        if size > 2:
+            self._size = size
 
-    def set_result(self, rubikscube):
+    def set_start(self, rubikscube, turn_cube=None):
+        self._start_cube = rubikscube
+        self._start_cube_turn = turn_cube
+
+    def set_result(self, rubikscube, turn_cube=None):
         self._result_cube = rubikscube
+        self._result_cube_turn = turn_cube
 
     def add_code(self, code):
         if isinstance(code, Step):
@@ -67,7 +75,24 @@ class XmlObject(AbstractXml):
 
         cubes = ET.Element('Cubes')
         cubes.append(XmlCube.get_xml(self._start_cube, "Start"))
+
+        if self._start_cube_turn is None:
+            start_cube_turn = ET.Element("Start-Turn")
+            start_cube_turn.text = "False"
+            cubes.append(start_cube_turn)
+        else:
+            cubes.append(self._start_cube_turn("Start-Turn"))
+
         cubes.append(XmlCube.get_xml(self._result_cube, "Result"))
+
+        if self._result_cube_turn is None:
+            start_cube_turn = ET.Element("Result-Turn")
+            start_cube_turn.text = "False"
+            cubes.append(start_cube_turn)
+        else:
+            cubes.append(self._result_cube_turn("Result-Turn"))
+
+
         move.append(cubes)
 
         steps = ET.Element("Steps")
