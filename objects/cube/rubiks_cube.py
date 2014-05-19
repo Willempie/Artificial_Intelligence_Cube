@@ -36,7 +36,7 @@ class RubiksCube(BRubiksCube):
                 self.set_side(side, counter)
                 counter += 1
             else:
-                self.set_side(side, counter)
+                self.set_side(side, None)
 
     def get_size(self):
         return self._dimension
@@ -138,6 +138,10 @@ class RubiksCube(BRubiksCube):
                     if array[x][y] == item:
                         return [side, x, y]
         return False
+
+    def execute_steps(self, step_list):
+        for step in step_list:
+            self._rotate_array(step.axis, step.rows, step.direction)
 
     def solved(self):
         #Checks if this RubiksCube is solved

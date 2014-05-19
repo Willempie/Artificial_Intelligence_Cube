@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import time
 from objects.cube.rubiks_cube import RubiksCube
+from objects.xml import xml_step
 from objects.xml.abstact_xml import AbstractXml
 from objects.xml.xml_cube import XmlCube
 from xml_step import Step
@@ -50,6 +51,15 @@ class XmlObject(AbstractXml):
         self._author = xml.find("Author").text
         self._date = xml.find("Date").text
         self._size = int(xml.find("Size").text)
+
+        self._start_cube = XmlCube.from_xml(xml.find("Cubes/Start"), self._size)
+        self._result_cube = XmlCube.from_xml(xml.find("Cubes/Result"), self._size)
+
+
+        for element in list(xml.find("Steps")):
+            step = Step()
+            step.from_xml(element)
+            self._codes.append(step)
 
         #Todo fetch the steps
 

@@ -4,13 +4,13 @@ from abstact_xml import AbstractXml
 
 class Step(AbstractXml):
 
-    def __init__(self, axis, rows, direction):
-        if axis.lower() in ['x','y','z']:
-            self.axis = axis.lower()
+    def __init__(self, axis=None, rows=None, direction=None):
+        if axis is None or axis in ['x','y','z']:
+            self.axis = axis
 
         self.rows = rows
 
-        if direction in [-1, 1]:
+        if direction is None or direction in [-1, 1]:
             self.direction = direction
 
     def from_xml(self, xml_object):

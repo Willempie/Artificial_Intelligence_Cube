@@ -35,11 +35,10 @@ class RubiksCubeConverter:
             current_side = input_cube.get_side(side)
             for x in range(input_cube.get_size()):
                 for y in range(input_cube.get_size()):
-                    if current_side[x][y] < len(Helper.CUBE_COLOR):
+                    if current_side[x][y] < len(Helper.CUBE_COLOR) and current_side[x][y] >= 0:
                         current_side[x][y] = Helper.CUBE_COLOR[current_side[x][y]]
                     else:
                         current_side[x][y] = color.gray(0.6) #dummy value
 
             cube.set_side(side, current_side)
-
         return cube

@@ -78,6 +78,10 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                 for z in xrange(self._dimension):
                     self._array[x][y][z].set_color(cube_color)
 
+    def execute_steps(self, step_list):
+        for step in step_list:
+            self.turn(step.axis, step.rows, step.direction)
+
     def turn(self, xyz, index, direction):
         if xyz == 'x':
             self.turn_x(index, direction)
