@@ -221,7 +221,7 @@ class VDisplay():
 
         # mouse handler
         mouse_handler = MouseHandler(cube_display.get_display())
-        mouse_handler.bind_mouse_click(self.cube, action_combo_box)
+        mouse_handler.bind_mouse_click(self.cube, cube_color_combo_box)
 
     def change_display_edit_panel(self):
        if self.__edit_panel.IsShown():
