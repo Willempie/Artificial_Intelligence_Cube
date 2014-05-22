@@ -47,6 +47,12 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
             else:
                 self.set_side(side, color.black, True)
 
+    def set_cube_visible(self, visible):
+        for x in xrange(self._dimension):
+            for y in xrange(self._dimension):
+                for z in xrange(self._dimension):
+                    self._array[x][y][z].v_frame.visible = visible
+
     def set_part(self, side, x, y, color, create_mode=False):
         if create_mode:
             RubiksCube.set_part(self, side, x, y, color)

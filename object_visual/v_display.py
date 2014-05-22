@@ -82,35 +82,45 @@ class VDisplay():
         cube_display = CubeDisplay(cube_gui.get_window())
 
         # GUI items
-        gui_items = GuiItems(cube_gui, cube_gui.get_window_panel())
+        self.gui_items = GuiItems(cube_gui, cube_gui.get_window_panel())
 
         # color combobox
-        action_combo_box = gui_items.gen_combobox((20, 10), (150, -1), Helper.CUBE_COLOR_NAME)
+        action_combo_box = self.gui_items.gen_combobox((20, 10), (150, -1), Helper.CUBE_COLOR_NAME)
         action_combo_box.SetSelection(0)
 
         # generate menu
-        gui_items.gen_menu(cube_gui.get_window())
+        self.gui_items.gen_menu(cube_gui.get_window())
+
+        # handle xml files
+        handle_xml = HandleFiles(cube_gui.get_window())
+
 
         # generate cube
         self.cube = VRubiksCube(3, None, None, None, False)
         self.cube.set_front(color.red)
+        self.cube.set_cube_visible(False)
+
+        self.result_cube = VRubiksCube(3, None, None, None, False)
+        self.result_cube.set_cube_visible(False)
 
         # step handler
         step_handling = StepHandling(self)
 
         # buttons
-        start_cube_button = gui_items.gen_button("Start Cube *", 20, 50)
+        start_cube_button = self.gui_items.gen_button("Start Cube *", 20, 50)
         # gui_items.bind_element(start_cube_button, wx.EVT_BUTTON, step_handling.start_cube)
-        result_cube_button = gui_items.gen_button("Result Cube *", 20, 80)
+        result_cube_button = self.gui_items.gen_button("Result Cube *", 20, 80)
         # gui_items.bind_element(result_cube_button, wx.EVT_BUTTON, step_handling.result_cube)
-        code_button = gui_items.gen_button("Code *", 20, 110)
+        code_button = self.gui_items.gen_button("Code *", 20, 110)
         # gui_items.bind_element(code_button, wx.EVT_BUTTON, step_handling.cube)
 
-        '''
-            EDIT PANEL
-        '''
+        self.create_edit_panel(cube_display, cube_gui, start_cube_button)
+        self.create_action_panel(cube_gui, code_button)
+
+
+    def create_edit_panel(self, cube_display, cube_gui, start_cube_button):
         # new EDIT panel (color, turnable, reset)
-        self.__edit_panel = gui_items.add_panel(450, 390, (200, 300))
+        self.__edit_panel = self.gui_items.add_panel(450, 390, (200, 300))
         cube_edit_gui_items = GuiItems(cube_gui, self.__edit_panel)
         box_sizer = cube_edit_gui_items.gen_box_sizer(wx.VERTICAL)
 
@@ -139,12 +149,13 @@ class VDisplay():
         # bind button for showing / hiding the edit panel
         start_cube_button.Bind(wx.EVT_BUTTON, lambda event: self.change_display_edit_panel())
 
+        # mouse handler
+        mouse_handler = MouseHandler(cube_display.get_display())
+        mouse_handler.bind_mouse_click(self.cube, cube_color_combo_box)
 
-        '''
-            ACTION PANEL
-        '''
+    def create_action_panel(self, cube_gui, code_button):
         # new ACTION panel (textbox met draaien, knop voor het uitvoeren van de draaien)
-        self.__action_panel = gui_items.add_panel(450, 390, (300, 300))
+        self.__action_panel = self.gui_items.add_panel(450, 390, (300, 300))
         cube_action_gui_items = GuiItems(cube_gui, self.__action_panel)
         main_sizer = cube_action_gui_items.gen_box_sizer(wx.HORIZONTAL)
         axes_sizer = cube_action_gui_items.gen_box_sizer(wx.VERTICAL)
@@ -213,15 +224,6 @@ class VDisplay():
 
         # bind button for showing/hiding action panel
         code_button.Bind(wx.EVT_BUTTON, lambda event: self.change_display_action_panel())
-
-
-        '''
-            END PANELS
-        '''
-
-        # mouse handler
-        mouse_handler = MouseHandler(cube_display.get_display())
-        mouse_handler.bind_mouse_click(self.cube, cube_color_combo_box)
 
     def change_display_edit_panel(self):
        if self.__edit_panel.IsShown():
