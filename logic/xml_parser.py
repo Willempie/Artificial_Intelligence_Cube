@@ -9,7 +9,7 @@ from objects.cube.rubiks_cube import RubiksCube
 
 class XmlParser:
 
-    CONST_XML_LOCATION = "../objects/xml"
+    CONST_XML_LOCATION = "objects/xml"
 
     def __init__(self):
         self.get_files()

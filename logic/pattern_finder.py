@@ -102,26 +102,26 @@ class PatternFinder:
 
 
 
-main = PatternFinder(3)
-
-cube1 = RubiksCube(3)
-cube1.turn_x(0,1)
-cube1.turn_x(2,1)
-cube1.turn_z(0,1)
-cube1.turn_z(1,1)
-cube1.turn_x(0,-1)
-cube1.turn_x(2,-1)
-
-cube2 = RubiksCube(3, False)
-
-color = 2
-cube2.set_front([[color, None, None],[color, color, None],[color, None, None]])
-cube2.set_left([[color+1, color+1, color+1],[None, color+1, None],[None, None, None]])
-
-main.set_base_cube(cube1)
-main.set_matching_cube(cube2)
-
-print main._match()
-
-a = RubiksCubeConverter.to_visual_cube(cube1)
-b = RubiksCubeConverter.to_visual_cube(cube2)
+#main = PatternFinder(3)
+#
+#cube1 = RubiksCube(3)
+#cube1.turn_x(0,1)
+#cube1.turn_x(2,1)
+#cube1.turn_z(0,1)
+#cube1.turn_z(1,1)
+#cube1.turn_x(0,-1)
+#cube1.turn_x(2,-1)
+#
+#cube2 = RubiksCube(3, False)
+#
+#color = 2
+#cube2.set_front([[color, None, None],[color, color, None],[color, None, None]])
+#cube2.set_left([[color+1, color+1, color+1],[None, color+1, None],[None, None, None]])
+#
+#main.set_base_cube(cube1)
+#main.set_matching_cube(cube2)
+#
+#print main._match()
+#
+#a = RubiksCubeConverter.to_visual_cube(cube1)
+#b = RubiksCubeConverter.to_visual_cube(cube2)

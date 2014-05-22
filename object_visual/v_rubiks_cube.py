@@ -4,6 +4,8 @@ from b_v_cube import BVCube
 from objects.cube.rubiks_cube import RubiksCube
 from v_cube import VCube
 from helper import Helper
+from random import randint, choice
+
 
 class VRubiksCube(RubiksCube, BVCube, BFps):
 
@@ -78,8 +80,19 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                 for z in xrange(self._dimension):
                     self._array[x][y][z].set_color(cube_color)
 
+    def set_cube_color(self, visible):
+        for x in xrange(self._dimension):
+            for y in xrange(self._dimension):
+                for z in xrange(self._dimension):
+                    self._array[x][y][z].v_frame.visible = visible
+
+    def random(self, steps = 20):
+        for x in range(steps):
+            self.turn(choice(["x","y","z"]), randint(0, self._dimension-1), choice([-1,1]))
+
     def execute_steps(self, step_list):
         for step in step_list:
+            #self.turn(step.axis, int(step.rows), int(step.direction))
             self.turn(step.axis, step.rows, step.direction)
 
     def turn(self, xyz, index, direction):

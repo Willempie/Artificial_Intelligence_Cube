@@ -239,7 +239,7 @@ class VDisplay():
         if direction == 0:
             direction = -1
 
-        self.__steps.append(Step(axis, row, direction))
+        self.__steps.append(Step(axis, int(row)-1, direction))
         self.__cube_action_textbox.AppendText(";" + str(axis) + "," + str(row) + "," + str(direction))
 
     def reset_textbox(self, event):
@@ -247,6 +247,8 @@ class VDisplay():
         self.__cube_action_textbox.Clear()
 
     def execute_code(self, event):
+        self.cube.execute_steps(self.__steps)
+
         button_id = event.GetEventObject().btn_id
 
         if button_id == 'run':

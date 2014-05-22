@@ -1,6 +1,7 @@
 from b_rubiks_cube import BRubiksCube
 from cube import Cube
 from helper import Helper
+from random import randint, choice
 
 
 class RubiksCube(BRubiksCube):
@@ -138,6 +139,10 @@ class RubiksCube(BRubiksCube):
                     if array[x][y] == item:
                         return [side, x, y]
         return False
+
+    def random(self, steps = 20):
+        for x in range(steps):
+            self._rotate_array(choice(["x","y","z"]), randint(0, self._dimension-1), choice([-1,1]))
 
     def execute_steps(self, step_list):
         for step in step_list:
