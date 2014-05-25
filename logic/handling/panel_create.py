@@ -1,0 +1,44 @@
+from gui_items import *
+from helper import Helper
+
+
+class CreatePanel:
+
+    def __init__(self, display):
+        self.display = display
+
+        # new EDIT panel (color, turnable, reset)
+        self.panel = self.display.gui_items.add_panel(450, 390, (200, 300))
+        cube_edit_gui_items = GuiItems(self.display.cube_gui, self.panel)
+        box_sizer = cube_edit_gui_items.gen_box_sizer(wx.VERTICAL)
+
+        # color dropdown menu
+        cube_color_combo_box = cube_edit_gui_items.gen_combobox((10, 10), (150, -1), Helper.CUBE_COLOR_NAME)
+        cube_color_combo_box.SetSelection(0)
+
+        # turnable checkbox
+        cube_turnable_checkbox = cube_edit_gui_items.gen_radiobox(20, 20, (100, 100), wx.RA_SPECIFY_ROWS,
+                                                                  ['Turnable', 'Not Turnable'])
+        # reset button
+        cube_reset_button = cube_edit_gui_items.gen_button("Reset", 30, 30)
+        cube_reset_button.Bind(wx.EVT_BUTTON, lambda event: CreatePanel._action_reset_button())
+
+        #add all elements
+        box_sizer.Add(cube_color_combo_box, 0, wx.ALL)
+        box_sizer.Add(cube_turnable_checkbox, 0, wx.ALL)
+        box_sizer.Add(cube_reset_button, 0, wx.ALL)
+
+        # set sizer to panel
+        self.panel.SetSizer(box_sizer)
+        self.panel.Layout()
+
+        # hide panel
+        self.panel.Hide()
+
+        # mouse handler todo fix this
+        #mouse_handler = MouseHandler(self.display.cube_self.display.get_self.display())
+        #mouse_handler.bind_mouse_click(self.display._storage.current_cube, cube_color_combo_box)
+
+
+    def _action_reset_button(self):
+        print "hello I'm a reset button :D"

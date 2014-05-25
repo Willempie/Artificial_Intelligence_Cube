@@ -22,6 +22,7 @@ class GuiItems:
 
         menu = wx.Menu()
         menu_item_new = menu.Append(-1, 'New', 'New XML file for Cube')
+
         menu_item_open = menu.Append(-1, 'Open', 'Open XML file for Cube')
         window.win.Bind(wx.EVT_MENU, getattr(handle_files, "open"), menu_item_open  )
 

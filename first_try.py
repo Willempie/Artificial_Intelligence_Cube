@@ -2,7 +2,7 @@ from object_visual.v_display import VDisplay
 from objects.cube.rubiks_cube import RubiksCube
 
 x = VDisplay()
-x.create_input_display()
+#x.create_input_display()
 
 # from object_visual.v_rubiks_cube import VRubiksCube
 # from objects.cube.cube import *

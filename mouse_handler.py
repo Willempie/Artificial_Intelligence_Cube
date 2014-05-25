@@ -23,8 +23,6 @@ class MouseHandler():
         self.__combobox_colors = combobox
 
     def mouse_block_click(self, event):
-
-
         clicked_box = self.__cube.contains(event.pick)
         if clicked_box is not False:
             if event.button == "middle":
