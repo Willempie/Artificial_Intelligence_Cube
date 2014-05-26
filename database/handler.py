@@ -6,18 +6,21 @@ from database.output import Output
 
 class Handler(Bridge):
 
-    def __init__(self, implementation):
-        self.__implementation = implementation
+    def __init__(self, output):
+        self.__output = output
 
-    def write(self):
+    def write(self, information):
         print "handler output"
-        self.__implementation.write()
+        self.__output.write(information)
+
+    def get_output_type(self):
+        return self.__output
 
 
 interface = Interface()
-dfile = File()
+dfile = File("C:\Users\Willem\PycharmProjects\Artificial_Intelligence_Cube\database\cube_database.db")
 
 handler = Handler(interface)
-handler.write()
+handler.write("SELECT * FROM solve")
 handler = Handler(dfile)
-handler.write()
+handler.write("SELECT * FROM solve")
