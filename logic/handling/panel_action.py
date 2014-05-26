@@ -10,7 +10,7 @@ class ActionPanel:
 
         # new ACTION panel (textbox met draaien, knop voor het uitvoeren van de draaien)
         self.panel = self.display.gui_items.add_panel(450, 390, (300, 300))
-        cube_action_gui_items = GuiItems(self.display.cube_gui, self.panel)
+        cube_action_gui_items = GuiItems(display, self.display.cube_gui, self.panel)
         main_sizer = cube_action_gui_items.gen_box_sizer(wx.HORIZONTAL)
         axes_sizer = cube_action_gui_items.gen_box_sizer(wx.VERTICAL)
         output_sizer = cube_action_gui_items.gen_box_sizer(wx.VERTICAL)
@@ -30,7 +30,7 @@ class ActionPanel:
 
         # dropdown for selecting cube row
         combo_box_items = []
-        for size in range(self.display.cube.get_size()):
+        for size in range(self.display._storage.cube_size):
             combo_box_items.append(str(size+1))
         self.action_combo_box = cube_action_gui_items.gen_combobox((150, 10), (150, -1), combo_box_items)
         self.action_combo_box.SetSelection(0)

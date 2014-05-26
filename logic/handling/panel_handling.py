@@ -7,9 +7,11 @@ class PanelHandling:
     def __init__(self, display):
         self.current_panel = None
 
-        self.edit_panel = CreatePanel(display).panel
+        self.edit = CreatePanel(display)
+        self.edit_panel = self.edit.panel
 
-        self.action_panel = ActionPanel(display).panel
+        self.action = ActionPanel(display)
+        self.action_panel = self.action.panel
 
     def _hide_current_panel(self):
         if self.current_panel is not None:

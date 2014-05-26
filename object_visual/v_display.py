@@ -7,18 +7,12 @@ from cube_display import *
 from cube_handler import *
 from gui_items import *
 from keyboard_handler import *
-from mouse_handler import *
-from helper import *
-from objects.xml.xml_step import Step
 from logic.handling.cube_storage import CubeStorage
 
 class VDisplay():
 
     __default_button_width = 88
     __default_button_height = 26
-    cube = None
-
-    __steps = []
 
     def __init__(self):
         '''
@@ -70,10 +64,7 @@ class VDisplay():
 
         self.create_input_display()
 
-        self._storage = CubeStorage(3)
-
         self._panels = PanelHandling(self)
-
 
     def create_input_display(self):
 
@@ -84,22 +75,16 @@ class VDisplay():
         self.cube_display = CubeDisplay(self.cube_gui.get_window())
 
         # GUI items
-        self.gui_items = GuiItems(self.cube_gui, self.cube_gui.get_window_panel())
+        self.gui_items = GuiItems(self, self.cube_gui, self.cube_gui.get_window_panel())
 
-        # color combobox
-        action_combo_box = self.gui_items.gen_combobox((20, 10), (150, -1), Helper.CUBE_COLOR_NAME)
-        action_combo_box.SetSelection(0)
+        #Cube Storage
+        self._storage = CubeStorage(self, 3)
+
+        # Xml Handler
+        self.handle_xml = HandleFiles(self)
 
         # generate menu
         self.gui_items.gen_menu(self.cube_gui.get_window())
-
-        # handle xml files
-        handle_xml = HandleFiles(self.cube_gui.get_window())
-
-        # generate cube
-        self.cube = VRubiksCube(3, None, None, None, False)
-        self.cube.set_front(color.red)
-        self.cube.set_cube_visible(False)
 
         # buttons
         self.start_cube_button = self.gui_items.gen_button("Start Cube *", 20, 50)
@@ -116,43 +101,15 @@ class VDisplay():
         self._panels.switch_to_create()
         self._storage.switch_to_start()
 
-
-        #if self.__edit_panel.IsShown():
-        #    self.__edit_panel.Hide()
-        #else:
-        #    self.__edit_panel.Show()
-
     def actionButtonResultCube(self):
+        self._panels.switch_to_create()
         self._storage.switch_to_result()
 
     def actionButtonCodeCube(self):
         self._panels.switch_to_action()
         self._storage.switch_to_code()
 
-        #if self.__action_panel.IsShown():
-        #    self.__action_panel.Hide()
-        #else:
-        #    self.__action_panel.Show()
 
-
-    def insert_into_textbox(self, axis, row, direction):
-        if direction == 0:
-            direction = -1
-
-        self.__steps.append(Step(axis, int(row)-1, direction))
-        self.__cube_action_textbox.AppendText(";" + str(axis) + "," + str(row) + "," + str(direction))
-
-    def reset_textbox(self, event):
-        self.__steps = []
-        self.__cube_action_textbox.Clear()
-
-    def execute_code(self, event):
-        self.cube.execute_steps(self.__steps)
-
-        button_id = event.GetEventObject().btn_id
-
-        if button_id == 'run':
-            print self.__cube_action_textbox.GetValue()
 
     '''
     def __init__(self):

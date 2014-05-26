@@ -11,26 +11,27 @@ class MouseHandler():
 
     __combobox_colors = None
 
-    def __init__(self, cube_display):
-        self.__cube_display = cube_display
+    def __init__(self, display):
+        self.__display = display
+        self.__cube_display = display.cube_display.get_display()
 
     def bind_grab(self):
         self.__cube_display.bind('mousedown', self.grab)
 
-    def bind_mouse_click(self, cube, combobox):
+    def bind_mouse_click(self, combobox):
         self.__cube_display.bind('click', self.mouse_block_click)
-        self.__cube = cube
         self.__combobox_colors = combobox
 
     def mouse_block_click(self, event):
-        clicked_box = self.__cube.contains(event.pick)
+        cube = self.__display._storage.current_cube
+        clicked_box = cube.contains(event.pick)
         if clicked_box is not False:
             if event.button == "middle":
-                self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.black)
+                cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.black)
             else:
                 selected_color = self.__combobox_colors.GetValue()
                 current_color = Helper.CUBE_COLOR[Helper.CUBE_COLOR_NAME.index(selected_color)]
-                self.__cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], current_color)
+                cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], current_color)
 
     def grab(self, event):
         #print("Block Address: ", event.pick)

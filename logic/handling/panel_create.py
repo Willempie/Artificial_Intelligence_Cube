@@ -1,5 +1,6 @@
 from gui_items import *
 from helper import Helper
+from mouse_handler import MouseHandler
 
 
 class CreatePanel:
@@ -9,7 +10,7 @@ class CreatePanel:
 
         # new EDIT panel (color, turnable, reset)
         self.panel = self.display.gui_items.add_panel(450, 390, (200, 300))
-        cube_edit_gui_items = GuiItems(self.display.cube_gui, self.panel)
+        cube_edit_gui_items = GuiItems(display, self.display.cube_gui, self.panel)
         box_sizer = cube_edit_gui_items.gen_box_sizer(wx.VERTICAL)
 
         # color dropdown menu
@@ -35,9 +36,9 @@ class CreatePanel:
         # hide panel
         self.panel.Hide()
 
-        # mouse handler todo fix this
-        #mouse_handler = MouseHandler(self.display.cube_self.display.get_self.display())
-        #mouse_handler.bind_mouse_click(self.display._storage.current_cube, cube_color_combo_box)
+        # mouse handler
+        mouse_handler = MouseHandler(self.display)
+        mouse_handler.bind_mouse_click(cube_color_combo_box)
 
 
     def _action_reset_button(self):

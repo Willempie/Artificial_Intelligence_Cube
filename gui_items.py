@@ -7,13 +7,12 @@ class GuiItems:
     __GUI = None
     __GUI_panel = None
 
-    def __init__(self, gui, gui_panel):
+    def __init__(self, display, gui, gui_panel):
+        self.display = display
         self.__GUI = gui
         self.__GUI_panel = gui_panel
 
     def gen_menu(self, window):
-
-        handle_files = HandleFiles(window.win)
 
         m = window.menubar  # Refers to the menubar, which can have several menus
 
@@ -24,10 +23,10 @@ class GuiItems:
         menu_item_new = menu.Append(-1, 'New', 'New XML file for Cube')
 
         menu_item_open = menu.Append(-1, 'Open', 'Open XML file for Cube')
-        window.win.Bind(wx.EVT_MENU, getattr(handle_files, "open"), menu_item_open  )
+        window.win.Bind(wx.EVT_MENU, self.display.handle_xml.open , menu_item_open)
 
         menu_item_save = menu.Append(-1, 'Save', 'Save XML file for Cube')
-        window.win.Bind(wx.EVT_MENU, getattr(handle_files, "save"), menu_item_save)
+        window.win.Bind(wx.EVT_MENU, self.display.handle_xml.save , menu_item_save)
 
         menu_item_close = menu.Append(-1, 'Close', 'Close XML file for Cube')
 
