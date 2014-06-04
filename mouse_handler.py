@@ -27,7 +27,7 @@ class MouseHandler():
         clicked_box = cube.contains(event.pick)
         if clicked_box is not False:
             if event.button == "middle":
-                cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], color.black)
+                cube.set_part(clicked_box[0], clicked_box[1], clicked_box[2], Helper.CUBE_DUMMIE_COLOR)
             else:
                 selected_color = self.__combobox_colors.GetValue()
                 current_color = Helper.CUBE_COLOR[Helper.CUBE_COLOR_NAME.index(selected_color)]

@@ -45,7 +45,7 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
             if set_colors:
                 self.set_side(side, Helper.CUBE_COLOR[Helper.CUBE_SIDES.index(side)], True)
             else:
-                self.set_side(side, color.black, True)
+                self.set_side(side, Helper.CUBE_DUMMIE_COLOR, True)
 
     def set_cube_visible(self, visible):
         for x in xrange(self._dimension):

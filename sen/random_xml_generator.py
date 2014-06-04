@@ -1,33 +1,18 @@
 import xml.etree.ElementTree as ET
-import time
-from random import randint
+from pathArray import storage
+from random import randint, choice
 
 class RandomXmlGenerator:
 
     def __init__(self, filename):
         self.filename = filename
 
-        pass
 
     def set_random_limits(self):
-        self.vehicles = 500
-        self.startTime = time
-        self.timeSpan = 200
-        self.spawnTimer = 5
-        self.multiSpawn = True
-        self.multiSpawnLimit = 5
-
-        self.spawnRates = [1,1,1,1,1]
-        print self.startTime.strftime("%Y-%m-%d %H:%M:%S")
-        self.startTime.sleep(1)
-        self.startTime.sleep(1)
-        self.startTime.sleep(1)
-        self.startTime.sleep(1)
-        print self.startTime.strftime("%Y-%m-%d %H:%M:%S")
-        #for x in range(10000000):
-        #    randomNumb = x * x * x * x * x
-        #print self.startTime.strftime("%Y-%m-%d %H:%M:%S")
-
+        self.spawnCap = 200
+        self.spawnTimer = 2
+        self.multiSpawnLimit = 6
+        self.spawnRates = [5,15,90,95,100]
 
     @staticmethod
     def toXml(i_type, i_location, i_direction, i_time):
@@ -37,11 +22,11 @@ class RandomXmlGenerator:
             type.text = str(i_type)
             vehicle.append(type)
 
-            location = ET.Element('Location')
+            location = ET.Element('StartPoint')
             location.text = str(i_location)
             vehicle.append(location)
 
-            direction = ET.Element('Direction')
+            direction = ET.Element('EndPoint')
             direction.text = str(i_direction)
             vehicle.append(direction)
 
@@ -52,20 +37,53 @@ class RandomXmlGenerator:
             return vehicle
 
     def generate(self):
-        current_file_name = self.filename + " " + str(x+1) + ".xml"
+        current_file_name = self.filename + ".xml"
 
 
         data = ET.Element("Data")
-        for vehicle in range(self.vehicles):
-            type = randint(0,4)
-            location = randint(0,3)
-            direction = randint(0,3)
-            time = 0
-            data.append(self.toXml(type, location, direction, time))
+        for time in range(self.spawnCap):
+
+            current_time = time * self.spawnTimer
+            current_spawn_set = []
+
+            for multi in range(self.multiSpawnLimit):
+
+                vehicle = self.getRandomVehicle()
+
+                while vehicle in current_spawn_set:
+                    vehicle = self.getRandomVehicle()
+
+                current_spawn_set.append(vehicle)
+                vehicle = self.getRandomVehicle()
+
+                data.append(self.toXml(vehicle[2], vehicle[0], vehicle[1], current_time))
 
         tree = ET.ElementTree(data)
-        tree.write(current_file_name, "utf-8", True)
+        tree.write(current_file_name, "utf-8", True )
 
-x = RandomXmlGenerator("Willem")
+    def getRandomVehicle(self):
+        vehicle_type = randint(1,100)
+
+        for chance in self.spawnRates:
+            if vehicle_type <= chance:
+                vehicle_type = self.spawnRates.index(chance)
+                break
+
+        temp_array = []
+        for road in storage.path_array:
+            if isinstance(road[2], int):
+                if vehicle_type is road[2]:
+                    temp_array.append(road)
+            else:
+                if vehicle_type in road[2]:
+                    temp_array.append(road)
+
+        road = choice(temp_array)
+        return [road[0], road[1], vehicle_type]
+
+x = RandomXmlGenerator("large")
 x.set_random_limits()
-#x.generate()
+
+#for z in range(50):
+#    print x.getRandomVehicle()
+x.generate()

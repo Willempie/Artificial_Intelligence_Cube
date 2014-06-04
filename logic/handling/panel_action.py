@@ -79,6 +79,11 @@ class ActionPanel:
         self.steps = []
         self.cube_action_textbox.Clear()
 
+    def _reset_textbox(self):
+        self.cube_action_textbox.Clear()
+        for step in self.steps:
+            self.cube_action_textbox.AppendText(";" + str(step.axis) + "," + str(step.rows) + "," + str(step.direction))
+
     def _button_x_y_z(self, axis, row, direction):
         if direction == 0:
             direction = -1
