@@ -73,7 +73,18 @@ class ActionPanel:
         self.panel.Hide()
 
     def _button_run(self):
-        self.display._storage.current_cube.execute_steps(self.steps)
+        self.read_steps()
+
+        #self.display._storage.current_cube.execute_steps(self.steps)
+
+    def read_steps(self):
+        self.steps = []
+
+        text = str(self.cube_action_textbox.GetValue())
+        for current_split in text.split(';'):
+            var_split = current_split.split(',')
+            print var_split
+
 
     def _button_reset(self):
         self.steps = []
@@ -89,4 +100,8 @@ class ActionPanel:
             direction = -1
 
         self.steps.append(Step(axis, int(row)-1, direction))
-        self.cube_action_textbox.AppendText(";" + str(axis) + "," + str(row) + "," + str(direction))
+
+        if len(self.cube_action_textbox.GetValue()) == 0:
+            self.cube_action_textbox.AppendText(str(axis) + "," + str(row) + "," + str(direction))
+        else:
+            self.cube_action_textbox.AppendText(";" + str(axis) + "," + str(row) + "," + str(direction))
