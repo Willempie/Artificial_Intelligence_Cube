@@ -17,10 +17,10 @@ class Handler(Bridge):
         return self.__output
 
 
-interface = Interface()
-dfile = File("C:\Users\Willem\PycharmProjects\Artificial_Intelligence_Cube\database\cube_database.db")
-
-handler = Handler(interface)
-handler.write("SELECT * FROM solve")
-handler = Handler(dfile)
-handler.write("SELECT * FROM solve")
+# interface = Interface()
+# dfile = File("C:\Users\Willem\PycharmProjects\Artificial_Intelligence_Cube\database\cube_database.db")
+#
+# handler = Handler(interface)
+# handler.write("SELECT * FROM solve")
+# handler = Handler(dfile)
+# handler.write("SELECT * FROM solve")

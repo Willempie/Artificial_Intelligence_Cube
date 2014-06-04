@@ -38,4 +38,7 @@ class CubeHandler():
         else:
             self.__direction = -1
 
+    def solve(self, event):
+        # SOLVE THE CUBE
+        pass
 

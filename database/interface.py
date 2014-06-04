@@ -7,4 +7,5 @@ class Interface(Output):
         return
 
     def write(self, information):
-        print "interface output"
+        print "Interface output:"
+        print information

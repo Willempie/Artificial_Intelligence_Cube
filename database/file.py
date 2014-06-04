@@ -8,9 +8,10 @@ class File(Output):
         self.__database_handler = DatabaseHandler(file_location)
 
     def write(self, information):
-        print "file output"
+        print "Information output to file:"
+        print information
         self.__database_handler.connect_database()
-        print(self.__database_handler.select(information))
+        self.__database_handler.insert(information)
         self.__database_handler.close_connection()
 
 

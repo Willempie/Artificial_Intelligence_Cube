@@ -2,9 +2,11 @@ from database_handler import DatabaseHandler
 
 database_handler = DatabaseHandler("C:/Users/Willem/PycharmProjects/Artificial_Intelligence_Cube/database/cube_database.db")
 result = database_handler.insert("INSERT INTO solve (date, size) VALUES ('8-5-2014', 5)")
+result += database_handler.insert("INSERT INTO steps (parent_id, cube, code, step) VALUES ('1', 'test_cube', 'test_code', 'test_step')")
 print result
 
-
+# "INSERT INTO solve (date, size) VALUES ('8-5-2014', 5)"
+# "INSERT INTO steps (parent_id, cube, code, step) VALUES ('1', 'test_cube', 'test_code', 'test_step')"
 
 # sql_query_array = ["CREATE TABLE steps (id INTEGER PRIMARY KEY AUTOINCREMENT,"
 #                        "parent_id INTEGER NOT NULL,"
