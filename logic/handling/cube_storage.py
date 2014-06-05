@@ -37,5 +37,5 @@ class CubeStorage:
 
     def switch_to_code(self):
         self._turn_invisible()
-        self.current_cube = RubiksCubeConverter.to_visual_cube(self._start_cube)
+        self.current_cube = RubiksCubeConverter.to_visual_cube(RubiksCubeConverter.to_code_cube(self._start_cube))
         self.current_cube.set_cube_visible(True)

@@ -2,7 +2,7 @@ from visual import *
 from helper import Helper
 from logic.rubiks_cube_converter import RubiksCubeConverter
 from objects.cube.rubiks_cube import RubiksCube
-
+import copy
 
 class PatternFinder:
 
@@ -15,7 +15,7 @@ class PatternFinder:
 
     def set_base_cube(self, cube):
         if cube.get_size() == self.cube_size:
-            self.base_cube = cube
+            self.base_cube = RubiksCubeConverter.to_code_cube(cube)
         else:
             raise Exception("Cube size doesn't match")
 
@@ -25,7 +25,7 @@ class PatternFinder:
 
     def set_matching_cube(self, cube):
         if cube.get_size() == self.cube_size:
-            self.match_cube = cube
+            self.match_cube = RubiksCubeConverter.to_code_cube(cube)
         else:
             raise Exception("Cube size doesn't match")
 
@@ -33,74 +33,95 @@ class PatternFinder:
         if turn_cube is not None:
             self.base_match_cube = turn_cube
 
+    def _generate_cubes(self):
+        storage_side = []
+
+        for x in range(6):
+            storage_side.append(copy.deepcopy(self.base_cube))
+
+        storage_side[1].turn("x", -1, 1)
+
+        storage_side[2].turn("x", -1, 1)
+        storage_side[2].turn("x", -1, 1)
+
+        storage_side[3].turn("x", -1, -1)
+
+        storage_side[4].turn("z", -1, 1)
+
+        storage_side[5].turn("z", -1, -1)
+
+        storage_turned_side = []
+        for x in range(6):
+            for y in range(3):
+                storage_turned_side.append(copy.deepcopy(storage_side[x]))
+
+        storage_turned_side[0].turn("y",-1,1)
+        storage_turned_side[1].turn("y",-1,1)
+        storage_turned_side[1].turn("y",-1,1)
+        storage_turned_side[2].turn("y",-1,-1)
+
+        storage_turned_side[3].turn("z",-1,1)
+        storage_turned_side[4].turn("z",-1,1)
+        storage_turned_side[4].turn("z",-1,1)
+        storage_turned_side[5].turn("z",-1,-1)
+
+        storage_turned_side[6].turn("y",-1,1)
+        storage_turned_side[7].turn("y",-1,1)
+        storage_turned_side[7].turn("y",-1,1)
+        storage_turned_side[8].turn("y",-1,-1)
+
+        storage_turned_side[9].turn("z",-1,1)
+        storage_turned_side[10].turn("z",-1,1)
+        storage_turned_side[10].turn("z",-1,1)
+        storage_turned_side[11].turn("z",-1,-1)
+
+        storage_turned_side[12].turn("x",-1,1)
+        storage_turned_side[13].turn("x",-1,1)
+        storage_turned_side[13].turn("x",-1,1)
+        storage_turned_side[14].turn("x",-1,-1)
+
+        storage_turned_side[15].turn("x",-1,1)
+        storage_turned_side[16].turn("x",-1,1)
+        storage_turned_side[16].turn("x",-1,1)
+        storage_turned_side[17].turn("x",-1,-1)
+
+        return storage_side + storage_turned_side
+
     def _match(self):
         #return False
         if self.base_cube is None or self.match_cube is None:
             raise ValueError("Input doesn't match")
 
-        for color in range(6):
-            storage = []
+        for cube in self._generate_cubes():
+            for color in range(6):
+                result = self.match_cube.is_match(self._next_set(cube, color))
 
-            for side in Helper.CUBE_SIDES:
-                base_side = self.base_cube.get_side(side)
-                match_side = self._next_set(self.match_cube.get_side(side), color)
-
-                storage.append(self._match_side(base_side, match_side))
-
-            print storage
-            if all(storage):
-                return True
+                if result:
+                    return True
 
         return False
 
-    def _match_side(self, side_a, side_b):
-        for x in range(self.cube_size):
-            for y in range(self.cube_size):
-                if side_b[x][y] is None:
-                    continue
+    def _next_set(self, current_cube, set_num):
+        local_cube = copy.deepcopy(current_cube)
 
-                if side_a[x][y] != side_b[x][y]:
-                    return False
-        return True
+        for side in Helper.CUBE_SIDES:
+            current_side = local_cube.get_side(side)
 
-    def _next_set(self, current_set, set_num):
-        for x in range(self.cube_size):
-            for y in range(self.cube_size):
-                if current_set[x][y] is not None:
-                    current_set[x][y] = ( current_set[x][y] + set_num ) % 6
-        return current_set
+            for x in range(self.cube_size):
+                for y in range(self.cube_size):
+                    if current_side[x][y] is not None:
+                        current_side[x][y] = (current_side[x][y] + set_num) % 6
 
-    def _turn_cube(self):
-        if self._match():
-            return True
+            local_cube.set_side(side, current_side)
 
-        for side in range(5):
-            if side == 0:
-                self._turn_step("y", "x")
-            elif side == 1:
-                self._turn_step("y", "z")
-            elif side == 2:
-                self._turn_step("y", "x")
-            elif side == 3:
-                self._turn_step("z", "y")
-            elif side == 4:
-                self.base_cube.turn("z", -1, 1)
-                self._turn_step("z", "y")
-        return False
+        return local_cube
 
-    def _turn_step(self, axis, next_axis):
-        self.base_cube.turn(axis, -1, 1)
-
-        if self._match():
-            return True
-
-        for x in range(3):
-            self.base_cube.turn(next_axis, -1, 1)
-
-            if self._match():
-                return True
-
-
+    #def _next_set(self, current_set, set_num):
+    #    for x in range(self.cube_size):
+    #        for y in range(self.cube_size):
+    #            if current_set[x][y] is not None:
+    #                current_set[x][y] = (current_set[x][y] + set_num) % 6
+    #    return current_set
 
 #main = PatternFinder(3)
 #

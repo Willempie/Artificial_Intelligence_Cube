@@ -19,7 +19,7 @@ class RubiksCubeConverter:
                     if current_side[x][y].color in Helper.CUBE_COLOR:
                         current_side[x][y] = Helper.CUBE_COLOR.index(current_side[x][y].color)
                     else:
-                        current_side[x][y] = 12 #dummy value
+                        current_side[x][y] = None
 
             cube.set_side(side, current_side)
 
@@ -28,7 +28,6 @@ class RubiksCubeConverter:
     @staticmethod
     def to_visual_cube(input_cube):
         if input_cube.__class__ == VRubiksCube().__class__:
-            #return copy(input_cube)
             return input_cube
 
         cube = VRubiksCube(input_cube.get_size(),None, None, None, False)

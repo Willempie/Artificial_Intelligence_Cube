@@ -157,14 +157,54 @@ class RubiksCube(BRubiksCube):
                self.check_left() and \
                self.check_right()
 
+    def is_match(self, cube, perfect=True):
+        storage = []
+        for side in Helper.CUBE_SIDES:
+            if perfect:
+                storage.append(self.get_side(side) == cube.get_side(side))
+            else:
+                storage.append(self._match_side(self.get_side(side), cube.get_side(side)))
+        return all(storage)
+
+
+    def _match_side(self, side_a, side_b):
+        for x in range(self.cube_size):
+            for y in range(self.cube_size):
+                if side_b[x][y] is None or side_a[x][y] is None:
+                    continue
+
+                if side_a[x][y] != side_b[x][y]:
+                    return False
+        return True
+
+    def turn(self, xyz, index, direction):
+        if xyz == 'x':
+            self.turn_x(index, direction)
+        if xyz == 'y':
+            self.turn_y(index, direction)
+        if xyz == 'z':
+            self.turn_z(index, direction)
+
     def turn_x(self, index, direction):
-        self._rotate_array('x', index, direction)
+        if index >= 0:
+            self._rotate_array('x', index, direction)
+        else:
+            for x in range(self.get_size()):
+                self._rotate_array('x', x, direction)
 
     def turn_y(self, index, direction):
-        self._rotate_array('y', index, direction)
+        if index >= 0:
+            self._rotate_array('y', index, direction)
+        else:
+            for x in range(self.get_size()):
+                self._rotate_array('y', x, direction)
 
     def turn_z(self, index, direction):
-        self._rotate_array('z', index, direction)
+        if index >= 0:
+            self._rotate_array('z', index, direction)
+        else:
+            for x in range(self.get_size()):
+                self._rotate_array('z', x, direction)
 
     def set_front(self, color):
         self.set_side("Front", color)

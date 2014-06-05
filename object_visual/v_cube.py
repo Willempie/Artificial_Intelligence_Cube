@@ -65,6 +65,3 @@ class VCube(Cube, BVCube):
 
     def rotate(self, box_angle, box_axis, box_origin):
         self.v_frame.rotate(angle=box_angle, axis=box_axis, origin=box_origin)
-
-    def contains__(self, item):
-        return self.get

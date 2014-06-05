@@ -86,12 +86,6 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
                 for z in xrange(self._dimension):
                     self._array[x][y][z].set_color(cube_color)
 
-    def set_cube_color(self, visible):
-        for x in xrange(self._dimension):
-            for y in xrange(self._dimension):
-                for z in xrange(self._dimension):
-                    self._array[x][y][z].v_frame.visible = visible
-
     def random(self, steps = 20):
         for x in range(steps):
             self.turn(choice(["x","y","z"]), randint(0, self._dimension-1), choice([-1,1]))
@@ -100,14 +94,6 @@ class VRubiksCube(RubiksCube, BVCube, BFps):
         for step in step_list:
             #self.turn(step.axis, int(step.rows), int(step.direction))
             self.turn(step.axis, step.rows, step.direction)
-
-    def turn(self, xyz, index, direction):
-        if xyz == 'x':
-            self.turn_x(index, direction)
-        if xyz == 'y':
-            self.turn_y(index, direction)
-        if xyz == 'z':
-            self.turn_z(index, direction)
 
     def turn_x(self, index, direction):
         for r in xrange(self.fps):
