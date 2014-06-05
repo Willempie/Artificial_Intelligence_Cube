@@ -3,9 +3,9 @@ from objects.cube.rubiks_cube import RubiksCube
 from solve_display import SolveDisplay
 
 
-# x = VDisplay()
+x = VDisplay()
 
-x = SolveDisplay()
+#x = SolveDisplay()
 #x.create_input_display()
 
 # from object_visual.v_rubiks_cube import VRubiksCube

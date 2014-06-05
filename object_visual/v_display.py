@@ -72,7 +72,7 @@ class VDisplay():
         self.cube_gui = CubeGui("Artificial Intelligence Cube")
 
         # create cube display
-        self.cube_display = CubeDisplay(self.cube_gui.get_window())
+        self.cube_display = CubeDisplay(self.cube_gui.get_window(), False)
 
         # GUI items
         self.gui_items = GuiItems(self, self.cube_gui, self.cube_gui.get_window_panel())

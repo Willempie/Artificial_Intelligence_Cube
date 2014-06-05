@@ -26,7 +26,7 @@ class ActionPanel:
 
 
         # textbox met draaien
-        self.cube_action_textbox = cube_action_gui_items.gen_textbox(10, 10, (200, -1), (wx.TE_READONLY | wx.TE_MULTILINE))
+        self.cube_action_textbox = cube_action_gui_items.gen_textbox(10, 10, (200, -1), (wx.TE_MULTILINE))
 
         # dropdown for selecting cube row
         combo_box_items = []
@@ -52,10 +52,16 @@ class ActionPanel:
                                                                         cube_turnable_checkbox.GetSelection()))
         z_button.Bind(wx.EVT_BUTTON, lambda event: self._button_x_y_z('z', self.action_combo_box.GetValue(),
                                                                         cube_turnable_checkbox.GetSelection()))
+
+        # undo button
+        undo_button = cube_action_gui_items.gen_button("Undo last input", 0,0)
+        undo_button.Bind(wx.EVT_BUTTON, self.__undo)
+
         # add elements to box_sizers
         output_sizer.Add(self.cube_action_textbox, 0, wx.ALL, 5)
         output_sizer.Add(cube_action_button, 0, wx.ALL, 5)
         output_sizer.Add(cube_reset_textbox_button, 0, wx.ALL, 5)
+        output_sizer.Add(undo_button, 0, wx.ALL, 5)
         axes_sizer.Add(x_button, 0, wx.ALL, 1)
         axes_sizer.Add(y_button, 0, wx.ALL, 1)
         axes_sizer.Add(z_button, 0, wx.ALL, 1)
@@ -72,18 +78,34 @@ class ActionPanel:
         # hide panel
         self.panel.Hide()
 
+    def __undo(self, event):
+        counter = 1
+        textbox_items = ""
+        splitted_inserted_text = self.cube_action_textbox.GetValue().split(';')
+        for current_split in splitted_inserted_text:
+            if counter < len(splitted_inserted_text):
+                textbox_items += ";" + current_split
+                counter += 1
+
+        # change textbox value
+        self.cube_action_textbox.Clear()
+        self.cube_action_textbox.AppendText(textbox_items[1:]) # minus first ; char
+
+
     def _button_run(self):
         self.read_steps()
 
-        #self.display._storage.current_cube.execute_steps(self.steps)
+        self.display._storage.current_cube.execute_steps(self.steps)
 
     def read_steps(self):
         self.steps = []
 
         text = str(self.cube_action_textbox.GetValue())
-        for current_split in text.split(';'):
-            var_split = current_split.split(',')
-            print var_split
+        if not text == "":
+            for current_split in text.split(';'):
+                var_split = current_split.split(',')
+                self.steps.append(Step(var_split[0], int(var_split[1])-1, int(var_split[2])))
+                print var_split
 
 
     def _button_reset(self):
@@ -99,7 +121,7 @@ class ActionPanel:
         if direction == 0:
             direction = -1
 
-        self.steps.append(Step(axis, int(row)-1, direction))
+        #self.steps.append(Step(axis, int(row)-1, direction))
 
         if len(self.cube_action_textbox.GetValue()) == 0:
             self.cube_action_textbox.AppendText(str(axis) + "," + str(row) + "," + str(direction))
