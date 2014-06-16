@@ -170,8 +170,8 @@ class RubiksCube(BRubiksCube):
     def _match_side(self, side_a, side_b):
         for x in range(self.cube_size):
             for y in range(self.cube_size):
-                if side_b[x][y] is None or side_a[x][y] is None:
-                    continue
+                # if side_b[x][y] is None or side_a[x][y] is None:
+                #     continue
 
                 if side_a[x][y] != side_b[x][y]:
                     return False

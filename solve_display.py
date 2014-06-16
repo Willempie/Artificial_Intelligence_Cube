@@ -23,13 +23,13 @@ class SolveDisplay():
         self.cube_gui = CubeGui("Artificial Intelligence Cube")
 
         # create cube display
-        self.cube_display = CubeDisplay(self.cube_gui.get_window())
+        self.cube_display = CubeDisplay(self.cube_gui.get_window(), False)
 
         #Cube Storage
-        self._storage = CubeStorage(self, 3)
+        self._storage = CubeStorage(self, 2)
 
         # generate cube
-        self.cube = VRubiksCube(3)
+        self.cube = VRubiksCube(2)
 
         # xml handler
         self.handle_xml = HandleFiles(self)

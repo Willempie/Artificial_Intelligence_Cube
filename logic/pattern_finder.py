@@ -12,6 +12,8 @@ class PatternFinder:
         self.base_turn_cube = None
         self.match_cube = None
         self.match_turn_cube = None
+        self.generated_cubes = []
+        self.next_set_cubes = []
 
     def set_base_cube(self, cube):
         if cube.get_size() == self.cube_size:
@@ -35,6 +37,7 @@ class PatternFinder:
 
     def _generate_cubes(self):
         storage_side = []
+        self.generated_cubes = []
 
         for x in range(6):
             storage_side.append(copy.deepcopy(self.base_cube))
@@ -85,19 +88,27 @@ class PatternFinder:
         storage_turned_side[16].turn("x",-1,1)
         storage_turned_side[17].turn("x",-1,-1)
 
-        return storage_side + storage_turned_side
+        self.generated_cubes = (storage_side + storage_turned_side)
+        #return storage_side + storage_turned_side
+
+    def create_next_set(self):
+        self.next_set_cubes = []
+        for cube in self.generated_cubes:
+            for color in range(6):
+                self.next_set_cubes.append(self._next_set(cube, color))
 
     def _match(self):
-        #return False
         if self.base_cube is None or self.match_cube is None:
             raise ValueError("Input doesn't match")
 
-        for cube in self._generate_cubes():
-            for color in range(6):
-                result = self.match_cube.is_match(self._next_set(cube, color))
+        # for cube in self.generated_cubes:
+        #     for color in range(6):
+        #         if self.match_cube.is_match(self._next_set(cube, color)):
+        #             return True
 
-                if result:
-                    return True
+        for cube in self.next_set_cubes:
+            if self.match_cube.is_match(cube):
+                return True
 
         return False
 

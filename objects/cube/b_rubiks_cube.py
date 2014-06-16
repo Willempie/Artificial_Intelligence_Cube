@@ -15,6 +15,10 @@ class BRubiksCube(BCube):
     def get_size(self):
         raise NotImplementedError("Should be implemented")
 
+    # TODO
+    def convert_to_string(self):
+        return "tester_cubie"
+
     def check_front(self):
         raise NotImplementedError("Should be implemented")
 

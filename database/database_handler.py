@@ -80,6 +80,7 @@ class DatabaseHandler:
 
                     return "Inserted all querys!"
                 else:
+                    print query_array
                     cursor = cursor.execute(query_array)
                     #commit changes
                     self.__database_connection.commit()
