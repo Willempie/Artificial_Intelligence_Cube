@@ -121,8 +121,6 @@ class ActionPanel:
         if direction == 0:
             direction = -1
 
-        #self.steps.append(Step(axis, int(row)-1, direction))
-
         if len(self.cube_action_textbox.GetValue()) == 0:
             self.cube_action_textbox.AppendText(str(axis) + "," + str(row) + "," + str(direction))
         else:

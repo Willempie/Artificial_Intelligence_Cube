@@ -1,4 +1,3 @@
-from numpy import random
 from visual_common.create_display import rate
 
 

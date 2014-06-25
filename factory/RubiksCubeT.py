@@ -1,5 +1,6 @@
 from factory.Shape import Shape
 
+
 class RubiksCubeT(Shape):
 
     def __init__(self, object):

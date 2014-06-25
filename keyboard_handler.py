@@ -1,6 +1,5 @@
 from numpy import random
 from visual_common.create_display import rate
-import wx
 
 
 class KeyboardHandler():
@@ -32,11 +31,8 @@ class KeyboardHandler():
         rate(self.__cube.fps)
         if key == self.__x_key:
             self.__cube.turn_x(random.randint(0, 3), self.__direction)
-            #print("x")
         elif key == self.__y_key:
             self.__cube.turn_y(random.randint(0, 3), self.__direction)
-            #print("y")
         elif key == self.__z_key:
             self.__cube.turn_z(random.randint(0, 3), self.__direction)
-            #print("z")
         rate(self.__cube.fps)

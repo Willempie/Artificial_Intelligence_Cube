@@ -1,5 +1,4 @@
 import wx
-from logic.handling.files import HandleFiles
 
 
 class GuiItems:

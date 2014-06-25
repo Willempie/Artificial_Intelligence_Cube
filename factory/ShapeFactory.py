@@ -1,4 +1,3 @@
-
 class ShapeFactory:
 
     def generateRubiksCube(self, size):

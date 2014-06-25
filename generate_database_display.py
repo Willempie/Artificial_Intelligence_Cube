@@ -1,20 +1,9 @@
-from visual import *
 from database.file import File
 from database.handler import Handler
-from database.interface import Interface
-from logic.handling.cube_storage import CubeStorage
 from logic.pattern_finder import PatternFinder
-from mouse_handler import MouseHandler
-from cubegui import *
-from cube_display import *
-from cube_handler import *
-from gui_items import *
-from keyboard_handler import *
 import copy
 import time
 from objects.cube.rubiks_cube import RubiksCube
-
-__author__ = 'Willem'
 
 
 class GenerateDatabaseDisplay():

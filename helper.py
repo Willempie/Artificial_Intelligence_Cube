@@ -1,6 +1,7 @@
 from visual import *
 import copy
 
+
 class Helper:
 
     CUBE_SIDES = ["Front", "Back", "Top", "Bottom", "Left", "Right"]
@@ -48,24 +49,6 @@ class Helper:
 
         if Helper._match_cube(a,b):
             return True
-
-        #for side in range(5):
-        #    if side == 0:
-        #        Helper._turn_step(a,b,"y", "x")
-        #    elif side == 1:
-        #        Helper._turn_step(a,b,"y", "z")
-        #    elif side == 2:
-        #        Helper._turn_step(a,b,"y", "x")
-        #    elif side == 3:
-        #        Helper._turn_step(a,b,"z", "y")
-        #    elif side == 4:
-        #        a.turn("z", -1, 1)
-        #        Helper._turn_step(a,b,"z", "y")
-        #
-        #    if Helper._match_cube(a,b):
-        #        return True
-        #
-        #return False
 
     @staticmethod
     def _turn_step(a, b, axis, next_axis):

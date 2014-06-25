@@ -19,12 +19,10 @@ class HandleFiles():
         self.display._panels.action.steps = self.current_xml._codes
         self.display._panels.action._reset_textbox()
 
-
     def _read_from_storage(self):
         self.current_xml.set_start(self.display._storage._start_cube)
         self.current_xml.set_result(self.display._storage._result_cube)
         self.current_xml.set_code(self.display._panels.action.steps)
-
 
     def open(self, event):
         openFileDialog = wx.FileDialog(self.__window, "Open XML file", self._xml_parser.CONST_XML_LOCATION, "",

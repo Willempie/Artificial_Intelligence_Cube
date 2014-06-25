@@ -1,7 +1,3 @@
-import wx
-# TODO now only gives main window the focus! Could be changed if more windows need focusing!
-
-
 class FocusHandler():
 
     __main_window = None

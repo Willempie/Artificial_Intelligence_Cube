@@ -1,4 +1,3 @@
-from factory.TextFactory import TextFactory
 from factory.GraphicalFactory import GraphicalFactory
 from factory.ShapeFactory import ShapeFactory
 from factory.Shape import Shape

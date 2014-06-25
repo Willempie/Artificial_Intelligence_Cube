@@ -1,6 +1,6 @@
 from logic.handling.panel_create import CreatePanel
 from logic.handling.panel_action import ActionPanel
-from gui_items import *
+
 
 class PanelHandling:
 

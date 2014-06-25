@@ -1,10 +1,7 @@
 import xml.etree.ElementTree as ET
 from os import listdir
 from os import path
-
 from objects.xml.xml_move import XmlObject
-from objects.xml.xml_step import Step
-from objects.cube.rubiks_cube import RubiksCube
 
 
 class XmlParser:
@@ -45,24 +42,3 @@ class XmlParser:
         xml_object = XmlObject()
         xml_object.from_xml(tree)
         return xml_object
-
-#d = XmlObject("Gay", 3)
-#d.set_start(RubiksCube(3))
-#d.set_result(RubiksCube(3))
-#
-#x = Step("y", 0, 1)
-#y = Step("x", 0, -1)
-#z = Step("x", 0, -1)
-#
-#d.add_code(x)
-#d.add_code(y)
-#d.add_code(z)
-#
-#xml_reader = XmlParser()
-#print(xml_reader.xml_files)
-##xml_reader.new_file("hello4.xml",d, True)
-#x = xml_reader.read_file("hello4.xml", True)
-
-#print x._author
-#print x._date
-#print x._start_cube.my_print()

@@ -1,4 +1,3 @@
-from visual import *
 from helper import Helper
 from logic.rubiks_cube_converter import RubiksCubeConverter
 from objects.cube.rubiks_cube import RubiksCube

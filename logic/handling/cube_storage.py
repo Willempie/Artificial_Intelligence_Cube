@@ -1,6 +1,5 @@
 from logic.rubiks_cube_converter import RubiksCubeConverter
 from object_visual.v_rubiks_cube import VRubiksCube
-from visual import *
 
 
 class CubeStorage:
