@@ -22,7 +22,7 @@ class CreatePanel:
                                                                   ['Turnable', 'Not Turnable'])
         # reset button
         cube_reset_button = cube_edit_gui_items.gen_button("Reset", 30, 30)
-        cube_reset_button.Bind(wx.EVT_BUTTON, lambda event: CreatePanel._action_reset_button())
+        cube_reset_button.Bind(wx.EVT_BUTTON, lambda event: self._action_reset_button())
 
         #add all elements
         box_sizer.Add(cube_color_combo_box, 0, wx.ALL)
@@ -42,4 +42,19 @@ class CreatePanel:
 
 
     def _action_reset_button(self):
+        #myXml = XmlParser()
+        #
+        #myObject = myXml.read_file("2.1.xml", True)
+        ##myObject2 = myXml.read_file("tha_cube.xml", True)
+        #
+        #myCompare = PatternFinder(3)
+        #
+        #myCompare.set_base_cube(self.display._storage._base_cube)
+        #myCompare.set_matching_cube(myObject._start_cube)
+        #
+        #print myCompare._match()
+        ##myCompare.create_next_set()
+        #
+        ##print myCompare._match()
+
         print "hello I'm a reset button :D"

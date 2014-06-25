@@ -15,7 +15,11 @@ class XmlCube(AbstractXml):
             side = [[None for k in xrange(size)] for i in xrange(size)]
             for y in range(rubikscube.get_size()):
                 for z in range(rubikscube.get_size()):
-                    side[y][z] = int(xml_object.find(x+"/Part-"+str(y)+"-"+str(z)).text)
+                    value = xml_object.find(x+"/Part-"+str(y)+"-"+str(z)).text
+                    if value == str(None):
+                        side[y][z] = None
+                    else:
+                        side[y][z] = int(value)
             rubikscube.set_side(x, side)
         return rubikscube
 

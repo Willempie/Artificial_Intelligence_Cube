@@ -3,6 +3,8 @@ from helper import Helper
 from logic.rubiks_cube_converter import RubiksCubeConverter
 from objects.cube.rubiks_cube import RubiksCube
 import copy
+from logic.xml_parser import XmlParser
+
 
 class PatternFinder:
 
@@ -35,12 +37,11 @@ class PatternFinder:
         if turn_cube is not None:
             self.base_match_cube = turn_cube
 
-    def _generate_cubes(self):
+    def _generate_cubes(self, cube):
         storage_side = []
-        self.generated_cubes = []
 
         for x in range(6):
-            storage_side.append(copy.deepcopy(self.base_cube))
+            storage_side.append(copy.deepcopy(cube))
 
         storage_side[1].turn("x", -1, 1)
 
@@ -88,8 +89,32 @@ class PatternFinder:
         storage_turned_side[16].turn("x",-1,1)
         storage_turned_side[17].turn("x",-1,-1)
 
-        self.generated_cubes = (storage_side + storage_turned_side)
-        #return storage_side + storage_turned_side
+        #self.generated_cubes = (storage_side + storage_turned_side)
+        print len(storage_side + storage_turned_side)
+        return storage_side + storage_turned_side
+
+    def find_pattern(self, cube_a, cubes_b):
+        current_color_set = []
+        match_color_set = []
+        for side in Helper.CUBE_SIDES:
+            current_side = cube_a.get_side(side)
+            match_side = cubes_b.get_side(side)
+
+            for x in range(self.cube_size):
+                for y in range(self.cube_size):
+                    if current_side[x][y] is None or match_side[x][y] is None:
+                        if current_side[x][y] not in current_color_set:
+                            current_color_set.append(current_side[x][y])
+                        if match_side[x][y] not in match_color_set:
+                            match_color_set.append(match_side[x][y])
+
+                        current = current_color_set.index(current_side[x][y])
+                        match = match_color_set.index(match_side[x][y])
+
+                        if current != match:
+                            return False
+        return True
+
 
     def create_next_set(self):
         self.next_set_cubes = []
@@ -101,13 +126,8 @@ class PatternFinder:
         if self.base_cube is None or self.match_cube is None:
             raise ValueError("Input doesn't match")
 
-        # for cube in self.generated_cubes:
-        #     for color in range(6):
-        #         if self.match_cube.is_match(self._next_set(cube, color)):
-        #             return True
-
-        for cube in self.next_set_cubes:
-            if self.match_cube.is_match(cube):
+        for cube in self._generate_cubes():
+            if self.find_pattern(cube):
                 return True
 
         return False
@@ -134,8 +154,28 @@ class PatternFinder:
     #                current_set[x][y] = (current_set[x][y] + set_num) % 6
     #    return current_set
 
-#main = PatternFinder(3)
+myXml = XmlParser()
+
+myObject = myXml.read_file("2.1.xml", True)
+myObject2 = myXml.read_file("tha_cube.xml", True)
 #
+#myCompare = PatternFinder(3)
+#
+#myCompare.set_base_cube(self.display._storage._base_cube)
+#myCompare.set_matching_cube(myObject._start_cube)
+#
+#print myCompare._match()
+
+
+
+x = RubiksCube(3)
+
+main = PatternFinder(3)
+mycubes = main._generate_cubes(myObject._start_cube)
+
+for cube in mycubes:
+    print main.find_pattern(myObject2._start_cube, cube)
+
 #cube1 = RubiksCube(3)
 #cube1.turn_x(0,1)
 #cube1.turn_x(2,1)

@@ -9,9 +9,9 @@ class RandomXmlGenerator:
 
 
     def set_random_limits(self):
-        self.spawnCap = 200
-        self.spawnTimer = 2
-        self.multiSpawnLimit = 6
+        self.spawnCap = 50
+        self.spawnTimer = 6
+        self.multiSpawnLimit = 2
         self.spawnRates = [5,15,90,95,100]
 
     @staticmethod
@@ -45,13 +45,16 @@ class RandomXmlGenerator:
 
             current_time = time * self.spawnTimer
             current_spawn_set = []
+            current_roads = []
 
             for multi in range(self.multiSpawnLimit):
 
                 vehicle = self.getRandomVehicle()
 
-                while vehicle in current_spawn_set:
+                while vehicle in current_spawn_set or vehicle[0] in current_roads:
                     vehicle = self.getRandomVehicle()
+
+                current_roads.append(vehicle[0])
 
                 current_spawn_set.append(vehicle)
                 vehicle = self.getRandomVehicle()
@@ -62,7 +65,7 @@ class RandomXmlGenerator:
         tree.write(current_file_name, "utf-8", True )
 
     def getRandomVehicle(self):
-        vehicle_type = randint(1,100)
+        vehicle_type = randint(1,96)
 
         for chance in self.spawnRates:
             if vehicle_type <= chance:
@@ -81,7 +84,7 @@ class RandomXmlGenerator:
         road = choice(temp_array)
         return [road[0], road[1], vehicle_type]
 
-x = RandomXmlGenerator("large")
+x = RandomXmlGenerator("tiny")
 x.set_random_limits()
 
 #for z in range(50):
