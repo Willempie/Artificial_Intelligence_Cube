@@ -46,6 +46,9 @@ class SolveDisplay():
         displayc.bind('keydown', keyboard_handler.on_key_down)
 
         mouse_handler = MouseHandler(self)
+# lambda event: self._button_x_y_z('z', self.action_combo_box.GetValue(),
+#                                                                         cube_turnable_checkbox.GetSelection())
+        #self.cube_display.get_display().bind('click', lambda event: mouse_handler.mouse_block_click(self))
 
     def create_gui_items(self, cube_handler, cube_gui):
 

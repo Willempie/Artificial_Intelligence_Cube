@@ -108,6 +108,7 @@ class GenerateDatabaseDisplay():
                 self.copy_cubes[row_counter+1].append(self.turn_cube(self.copy_cubes[row_counter][cube], 'y', 1, -1))
 
                 self.copy_cubes[row_counter+1].append(self.turn_cube(self.copy_cubes[row_counter][cube], 'z', 0, 1))
+                self.copy_cubes[row_counter+1].append(self.turn_cube(self.copy_cubes[row_counter][cube], 'z', 0, 1))
                 self.copy_cubes[row_counter+1].append(self.turn_cube(self.copy_cubes[row_counter][cube], 'z', 0, -1))
                 self.copy_cubes[row_counter+1].append(self.turn_cube(self.copy_cubes[row_counter][cube], 'z', 1, 1))
                 self.copy_cubes[row_counter+1].append(self.turn_cube(self.copy_cubes[row_counter][cube], 'z', 1, -1))
@@ -125,7 +126,7 @@ class GenerateDatabaseDisplay():
         self.database_handler.write(cube_string)
         pass
 
-
 #x = GenerateDatabaseDisplay()
 #x.generate_database()
+
 

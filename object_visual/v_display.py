@@ -9,7 +9,7 @@ from gui_items import *
 from keyboard_handler import *
 from logic.handling.cube_storage import CubeStorage
 
-class VDisplay():
+class Controller():
 
     __default_button_width = 88
     __default_button_height = 26

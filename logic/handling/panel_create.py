@@ -40,6 +40,9 @@ class CreatePanel:
         mouse_handler = MouseHandler(self.display)
         mouse_handler.bind_mouse_click(cube_color_combo_box)
 
+        self.display.cube_display.get_display().bind('click', lambda event: mouse_handler.mouse_block_click(event, self.display))
+
+
 
     def _action_reset_button(self):
         #myXml = XmlParser()
