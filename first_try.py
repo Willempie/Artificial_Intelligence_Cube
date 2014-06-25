@@ -1,12 +1,12 @@
 from generate_database_display import GenerateDatabaseDisplay
-from object_visual.v_display import VDisplay
+from object_visual.v_display import Controller
 from objects.cube.rubiks_cube import RubiksCube
 from solve_display import SolveDisplay
 
 
-# x = VDisplay()
+x = Controller()
 
-x = SolveDisplay()
+# x = SolveDisplay()
 
 #x.create_input_display()
 

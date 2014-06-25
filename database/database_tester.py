@@ -1,4 +1,4 @@
-from database_handler import DatabaseHandler
+from database_handler_old import DatabaseHandler
 
 database_handler = DatabaseHandler("C:/Users/Willem/PycharmProjects/Artificial_Intelligence_Cube/database/cube_database.db")
 result = database_handler.insert("INSERT INTO solve (date, size) VALUES ('8-5-2014', 5)")

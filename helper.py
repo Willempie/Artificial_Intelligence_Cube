@@ -43,8 +43,8 @@ class Helper:
         a = copy.deepcopy(cube_a)
         b = copy.deepcopy(cube_b)
 
-        print a.my_print()
-        print b.my_print()
+        print a.toString()
+        print b.toString()
 
         if Helper._match_cube(a,b):
             return True

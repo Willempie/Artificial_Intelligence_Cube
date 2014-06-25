@@ -19,10 +19,11 @@ class MouseHandler():
         self.__cube_display.bind('mousedown', self.grab)
 
     def bind_mouse_click(self, combobox):
-        self.__cube_display.bind('click', self.mouse_block_click)
+        #self.__cube_display.bind('click', self.mouse_block_click)
         self.__combobox_colors = combobox
 
-    def mouse_block_click(self, event):
+    def mouse_block_click(self, event, display):
+        self.__display = display
         cube = self.__display._storage.current_cube
         clicked_box = cube.contains(event.pick)
         if clicked_box is not False:

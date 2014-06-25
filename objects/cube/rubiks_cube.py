@@ -260,7 +260,7 @@ class RubiksCube(BRubiksCube):
     def check_right(self):
         return self._check_side("Right")
 
-    def my_print(self):
+    def toString(self):
         print("Front")
         print(self.get_front())
         print("Back")

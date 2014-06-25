@@ -126,6 +126,6 @@ class GenerateDatabaseDisplay():
         pass
 
 
-x = GenerateDatabaseDisplay()
-x.generate_database()
+# x = GenerateDatabaseDisplay()
+# x.generate_database()
 
