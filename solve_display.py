@@ -7,7 +7,7 @@ from cube_display import *
 from cube_handler import *
 from gui_items import *
 from keyboard_handler import *
-
+from logic.handling.files import HandleFiles
 
 __author__ = 'Willem'
 
@@ -26,10 +26,10 @@ class SolveDisplay():
         self.cube_display = CubeDisplay(self.cube_gui.get_window(), False)
 
         #Cube Storage
-        self._storage = CubeStorage(self, 2)
+        self._storage = CubeStorage(self, 3)
 
         # generate cube
-        self.cube = VRubiksCube(2)
+        self.cube = VRubiksCube(3)
 
         # xml handler
         self.handle_xml = HandleFiles(self)
@@ -86,3 +86,5 @@ class SolveDisplay():
         radio_buttons = gui_items.gen_radiobox(150, 50, (180, -1), wx.RA_SPECIFY_ROWS, directions)
         # bind radiobuttons
         gui_items.bind_element(radio_buttons, wx.EVT_RADIOBOX, cube_handler.set_direction)
+
+x = SolveDisplay()
