@@ -13,8 +13,6 @@ class PatternFinder:
         self.base_turn_cube = None
         self.match_cube = None
         self.match_turn_cube = None
-        self.generated_cubes = []
-        self.next_set_cubes = []
 
     def set_base_cube(self, cube):
         if cube.get_size() == self.cube_size:
@@ -92,28 +90,111 @@ class PatternFinder:
         print len(storage_side + storage_turned_side)
         return storage_side + storage_turned_side
 
-    def find_pattern(self, cube_a, cubes_b):
-        current_color_set = []
-        match_color_set = []
+    def find_shadow_pattern(self, cube_a, cubes_b):
+
+        result = []
         for side in Helper.CUBE_SIDES:
             current_side = cube_a.get_side(side)
             match_side = cubes_b.get_side(side)
 
+            new_current_side = []
+            new_match_side = []
+
+            current_color_set = []
+            match_color_set = []
+
             for x in range(self.cube_size):
+                new_current_side.append([])
+                new_match_side.append([])
                 for y in range(self.cube_size):
                     if current_side[x][y] is None or match_side[x][y] is None:
+                        new_current_side[x].append(None)
+                        new_match_side[x].append(None)
+                    else:
                         if current_side[x][y] not in current_color_set:
                             current_color_set.append(current_side[x][y])
                         if match_side[x][y] not in match_color_set:
                             match_color_set.append(match_side[x][y])
 
-                        current = current_color_set.index(current_side[x][y])
-                        match = match_color_set.index(match_side[x][y])
+                        new_current_side[x].append(current_color_set.index(current_side[x][y]))
+                        new_match_side[x].append(match_color_set.index(match_side[x][y]))
+            #print current_color_set
+            #print match_color_set
+            result.append(new_current_side == new_match_side)
 
-                        if current != match:
-                            return False
-        return True
+        #print result
+        return all(result)
 
+    def find_pattern(self, cube_a, cube_b):
+        for cube in self._generate_cubes(cube_b):
+            if self.find_shadow_pattern(cube_a, cube):
+                if self.match_pattern(cube_a, cube):
+                    return True
+
+        return False
+
+    def filter_cube(self, input_cube, xml_cube):
+        temp_cube = RubiksCube(self.cube_size, False)
+
+        for side in Helper.CUBE_SIDES:
+            current_side = input_cube.get_side(side)
+            match_side = xml_cube.get_side(side)
+
+            new_side = []
+            for x in range(self.cube_size):
+                new_side.append([])
+                for y in range(self.cube_size):
+                    if match_side[x][y] is None:
+                        new_side[x].append(None)
+                    else:
+                        new_side[x].append(current_side[x][y])
+
+            temp_cube.set_side(side, new_side)
+        return temp_cube
+
+    def match_pattern(self, cube_a, cube_b):
+        cube = self.filter_cube(cube_a, cube_b)
+        #RubiksCubeConverter.to_visual_cube(cube)
+        #RubiksCubeConverter.to_visual_cube(cube_b)
+        #RubiksCubeConverter.to_visual_cube(cube_a)
+
+        for turned_cube in self._generate_cubes(cube):
+            result = []
+
+            current_color_set = []
+            match_color_set = []
+
+            for side in Helper.CUBE_SIDES:
+                current_side = turned_cube.get_side(side)
+                match_side = cube_b.get_side(side)
+
+                new_current_side = []
+                new_match_side = []
+
+                for x in range(self.cube_size):
+                    new_current_side.append([])
+                    new_match_side.append([])
+                    for y in range(self.cube_size):
+                        if current_side[x][y] is None or match_side[x][y] is None:
+                            new_current_side[x].append(None)
+                            new_match_side[x].append(None)
+                        else:
+                            if current_side[x][y] not in current_color_set:
+                                current_color_set.append(current_side[x][y])
+                            if match_side[x][y] not in match_color_set:
+                                match_color_set.append(match_side[x][y])
+
+                            new_current_side[x].append(current_color_set.index(current_side[x][y]))
+                            new_match_side[x].append(match_color_set.index(match_side[x][y]))
+
+                #print new_current_side + new_match_side
+                result.append(new_current_side == new_match_side)
+
+            #print current_color_set + match_color_set
+            if all(result):
+                #RubiksCubeConverter.to_visual_cube(cube_b)
+                return True
+        return False
 
     def create_next_set(self):
         self.next_set_cubes = []
@@ -146,53 +227,24 @@ class PatternFinder:
 
         return local_cube
 
-    #def _next_set(self, current_set, set_num):
-    #    for x in range(self.cube_size):
-    #        for y in range(self.cube_size):
-    #            if current_set[x][y] is not None:
-    #                current_set[x][y] = (current_set[x][y] + set_num) % 6
-    #    return current_set
-
 myXml = XmlParser()
 
 myObject = myXml.read_file("2.1.xml", True)
-myObject2 = myXml.read_file("tha_cube.xml", True)
-#
-#myCompare = PatternFinder(3)
-#
-#myCompare.set_base_cube(self.display._storage._base_cube)
-#myCompare.set_matching_cube(myObject._start_cube)
-#
-#print myCompare._match()
-
-
+myObject2 = myXml.read_file("xxx_cube.xml", True)
 
 x = RubiksCube(3)
+x2 = RubiksCube(3)
+x2.turn_z(-1,1)
+
+#RubiksCubeConverter.to_visual_cube(myObject._start_cube)
+#RubiksCubeConverter.to_visual_cube(myObject2._start_cube)
+
 
 main = PatternFinder(3)
-mycubes = main._generate_cubes(myObject._start_cube)
+#print main.find_pattern(x, x2)
+print main.find_pattern(myObject2._start_cube, myObject._start_cube)
 
-for cube in mycubes:
-    print main.find_pattern(myObject2._start_cube, cube)
 
-#cube1 = RubiksCube(3)
-#cube1.turn_x(0,1)
-#cube1.turn_x(2,1)
-#cube1.turn_z(0,1)
-#cube1.turn_z(1,1)
-#cube1.turn_x(0,-1)
-#cube1.turn_x(2,-1)
-#
-#cube2 = RubiksCube(3, False)
-#
-#color = 2
-#cube2.set_front([[color, None, None],[color, color, None],[color, None, None]])
-#cube2.set_left([[color+1, color+1, color+1],[None, color+1, None],[None, None, None]])
-#
-#main.set_base_cube(cube1)
-#main.set_matching_cube(cube2)
-#
-#print main._match()
-#
-#a = RubiksCubeConverter.to_visual_cube(cube1)
-#b = RubiksCubeConverter.to_visual_cube(cube2)
+#print main.find_pattern(x, x2)
+#print main.find_pattern(myObject._start_cube, myObject2._start_cube)
+#for cube in mycubes:

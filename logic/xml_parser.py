@@ -13,13 +13,17 @@ class XmlParser:
 
     def get_files(self):
         if path.exists(self.CONST_XML_LOCATION):
-            self.xml_files = [f for f in listdir(self.CONST_XML_LOCATION)
-                              if f.endswith('.xml')]
-
-            if self.count_files() == 0:
-                raise IOError("No Xml found in the directory")
+            pass
+        elif path.exists("../"+self.CONST_XML_LOCATION):
+            self.CONST_XML_LOCATION = "../"+self.CONST_XML_LOCATION
         else:
             raise IOError("Xml directory not found")
+
+        self.xml_files = [f for f in listdir(self.CONST_XML_LOCATION)
+                          if f.endswith('.xml')]
+
+        if self.count_files() == 0:
+            raise IOError("No Xml found in the directory")
 
     def count_files(self):
         return len(self.xml_files)

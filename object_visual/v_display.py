@@ -1,5 +1,6 @@
 from visual import *
 import gui_items
+from logic.handling.files import HandleFiles
 from logic.handling.panel_handling import PanelHandling
 from object_visual.v_rubiks_cube import VRubiksCube
 from cubegui import *
